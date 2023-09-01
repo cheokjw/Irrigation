@@ -1,17 +1,18 @@
-# Import Necessary Libraries
+# Import Necessary Libraries ------------------------------
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 from datetime import datetime
 import os
 import json
 from google.cloud import firestore
-
+from google.auth.transport import requests
+# ---------------------------------------------------------
 
 # DATABASE ------------------------------------------------
 # Connect to firestore database by using JSON account key
 key_dict = json.loads(st.secrets["textkey"])
-creds = service_account.Credentials.from_service_account_info(key_dict)
-db = firestore.Client(credentials=creds, project="streamlit-reddit")
+creds = requests.Credentials.from_service_account_info(key_dict)
+db = firestore.Client(credentials=creds, project="practical")
 
 # Lists out all the collection in the database (For user verification purposes)
 userList = [collection.id for collection in db.collections()]
