@@ -47,16 +47,17 @@ username = st.text_input('Username: ')
 
 if st.button('Login'):
     # Testing Purpose
-    st.write(username)
-    st.write(userList)
-    
+    print(username)
+    print(userList)
+
     if len(username) == 0:
         st.warning("Username should not be EMPTY!", icon='🚨')
+
     elif username not in userList:
         st.warning("Username has not been registered", icon='🚨')
     else:
-        userInfo = db.collection(username).document('userInfo').to_dict()
-        currUser = db.collection('currentUser').document('curr').to_dict()
+        userInfo = db.collection(username).document('userInfo').get().to_dict()
+        currUser = db.collection('currentUser').document('curr').get().to_dict()
 
         if userInfo['rfid'] == currUser['rfid']:
             switch_page('test')
