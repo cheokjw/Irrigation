@@ -4,7 +4,7 @@ from datetime import datetime
 import os
 from google.cloud import firestore
 
-now = dateime.now()
+now = datetime.now()
 curr = now.strftime("%d/%m/%Y %H:%M:%S")
 
 # DATABASE ------------------------------------------------
