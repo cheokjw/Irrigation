@@ -5,7 +5,8 @@ import os
 from google.cloud import firestore
 
 now = datetime.now()
-curr = now.strftime("%d/%m/%Y %H:%M:%S")
+curr = now.strftime("%d-%m-%Y %H:%M:%S")
+print(curr)
 
 # DATABASE ------------------------------------------------
 # Connect to firestore database by using JSON account key
@@ -13,24 +14,40 @@ db = firestore.Client.from_service_account_json('firestore_key.json')
 
 
 # Write Sample data into firestore
-doc_ref = db.collection('plant').document(curr)
+doc_ref = db.collection('user1').document(str(curr))
 doc_ref.set({
-    'distance': 12,
-    'humidity': 30,
-    'lightIntensity': 50,
-    'moisture': 20,
-    'pH': 5,
+    'distance': 40,
+    'humidity': 10,
+    'lightIntensity': 60,
+    'moisture': 10,
+    'pH': 7,
     'temperature': 28
 })
 
 
-# Read all posts (Change to 'user' in the future)
-post_ref = db.collection('plant')
+# Read all posts 
+post_ref = db.collection('user1')
 # ----------------------------------------------------------
 
 
 
 # STREAMLIT ------------------------------------------------
+
+# Page STYLE ===============
+st.set_page_config(initial_sidebar_state="collapsed")
+st.markdown(
+    """
+<style>
+    [data-testid="collapsedControl"] {
+        display: none
+    }
+</style>
+""",
+    unsafe_allow_html=True,
+)
+# ============================
+
+
 # Display obtained data
 st.header('Smart Irrigation System')
 
