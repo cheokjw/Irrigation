@@ -26,23 +26,24 @@ post_ref = db.collection('user1')
 # STREAMLIT ------------------------------------------------
 
 # Page STYLE ===============
-# st.set_page_config(initial_sidebar_state="collapsed")
-# st.markdown(
-#     """
-# <style>
-#     [data-testid="collapsedControl"] {
-#         display: none
-#     }
-# </style>
-# """,
-#     unsafe_allow_html=True,
-# )
+st.set_page_config(initial_sidebar_state="collapsed")
+st.markdown(
+    """
+<style>
+    [data-testid="collapsedControl"] {
+        display: none
+    }
+</style>
+""",
+    unsafe_allow_html=True,
+)
 # ============================
 
 
-# Display obtained data
+# Display Page
 st.header('Smart Irrigation System')
 
+# LOGIN FUNCTION ===================================================================
 username = st.text_input('Username: ')
 
 if st.button('Login'):
@@ -65,6 +66,7 @@ if st.button('Login'):
             st.warning("Username and RFID card/tag did not match", icon='🚨')
         else:
             st.warning("Please scan RFID card/ tag", icon='🚨')
+# =================================================================================
 
 # ----------------------------------------------------------
 
