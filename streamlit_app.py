@@ -4,7 +4,9 @@ import streamlit as st
 import os
 from google.cloud import firestore
 
-curr = datime.now().strftime('%d/%m/%Y %H:%M:%S')
+now = datime.now()
+curr = now.strftime("%d/%m/%Y %H:%M:%S")
+
 # DATABASE ------------------------------------------------
 # Connect to firestore database by using JSON account key
 db = firestore.Client.from_service_account_json('firestore_key.json')
@@ -35,7 +37,7 @@ st.header('Smart Irrigation System')
 for doc in post_ref.stream():
     st.write(f'The id is: {doc.id}')
     st.write(f'The contents are: ', doc.to_dict())
-    
+
 # ----------------------------------------------------------
 
 
