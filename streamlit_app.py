@@ -25,7 +25,7 @@ doc_ref.set({
 
 
 # Read all posts (Change to 'user' in the future)
-posts_ref = db.collection('plant')
+post_ref = db.collection('plant')
 # ----------------------------------------------------------
 
 
