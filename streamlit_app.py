@@ -12,7 +12,7 @@ from google.oauth2 import service_account
 # Connect to firestore database by using JSON account key
 key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
-db = firestore.Client(credentials=creds, project="practical")
+db = firestore.Client(credentials=creds)
 
 # Lists out all the collection in the database (For user verification purposes)
 userList = [collection.id for collection in db.collections()]
