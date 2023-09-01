@@ -18,6 +18,9 @@ post_ref = db.collection('user1')
 # ----------------------------------------------------------
 
 
+# STREAMLIT FUNCTIONS --------------------------------------
+# ----------------------------------------------------------
+
 
 # STREAMLIT ------------------------------------------------
 
@@ -41,6 +44,9 @@ st.header('Smart Irrigation System')
 
 username = st.text_input('Username: ')
 
+if st.button('Login'):
+    if len(username) == 0:
+        st.toast("Username field should not be EMPTY!", icon='🚨')
 # ----------------------------------------------------------
 
 
