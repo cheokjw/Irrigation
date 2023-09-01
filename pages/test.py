@@ -2,6 +2,7 @@
 import streamlit as st
 from datetime import datetime
 import os
+import json
 from google.cloud import firestore
 
 now = datetime.now()
@@ -10,7 +11,9 @@ print(curr)
 
 # DATABASE ------------------------------------------------
 # Connect to firestore database by using JSON account key
-db = firestore.Client.from_service_account_json('firestore_key.json')
+key_dict = json.loads(st.secrets["textkey"])
+creds = service_account.Credentials.from_service_account_info(key_dict)
+db = firestore.Client(credentials=creds, project="streamlit-reddit")
 
 
 # Write Sample data into firestore
