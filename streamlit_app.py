@@ -5,13 +5,13 @@ from datetime import datetime
 import os
 import json
 from google.cloud import firestore
-from google.auth import credentials
+from google.oauth2 import service_account
 # ---------------------------------------------------------
 
 # DATABASE ------------------------------------------------
 # Connect to firestore database by using JSON account key
 key_dict = json.loads(st.secrets["textkey"])
-creds = credentials.Credentials.from_authorized_user_info(key_dict)
+creds = service_account.Credentials.from_service_account_info(key_dict)
 db = firestore.Client(credentials=creds, project="practical")
 
 # Lists out all the collection in the database (For user verification purposes)
