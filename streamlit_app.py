@@ -1,5 +1,5 @@
 import streamlit as st
-from google.cloud import firestore
+# from google.cloud import firestore
 
 
 def file_selector(folder_path='.'):
