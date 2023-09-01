@@ -46,6 +46,10 @@ st.header('Smart Irrigation System')
 username = st.text_input('Username: ')
 
 if st.button('Login'):
+    # Testing Purpose
+    st.write(username)
+    st.write(userList)
+    
     if len(username) == 0:
         st.warning("Username should not be EMPTY!", icon='🚨')
     elif username not in userList:
