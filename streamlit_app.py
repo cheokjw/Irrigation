@@ -2,7 +2,7 @@ import streamlit as st
 from google.cloud import firestore
 
 # Connect to firestore database by using JSON account key
-db = firestore.Client.from_service_account_json("firestore-key.json")
+db = firestore.Client.from_service_account_json("firestore_key.json")
 
 ref = db.collection("plant").document("plantData")
 
