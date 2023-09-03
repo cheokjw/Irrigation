@@ -51,6 +51,9 @@ st.markdown(
 
 
 # Display obtained data
+if st.button('BACK TO HOME PAGE 👈'):
+    switch_page('main')
+    
 st.header('Plant SETTINGS 🛞')
 
 userData = db.collection(user).document('userInfo').get().to_dict()
