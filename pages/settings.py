@@ -44,6 +44,8 @@ st.markdown(
 # Display obtained data
 st.header('Smart Irrigation System')
 
+user_choice = 2
+
 # col1, col2, col3 represents the preset plant
 # col4 represents the user modified plant settings
 col1, col2, col3, col4 = st.columns(4)
@@ -51,13 +53,26 @@ col1, col2, col3, col4 = st.columns(4)
 
 # First Radio button has been deselected 
 with col1:
-    st.radio(label='test', options=['One', 'Two'])
+    if user_choice == 1:
+        st.radio(label='Plant 1', options=['One', 'Plant 1'], default='Plant 1', label_visibility='collapsed')
+    else: 
+        st.radio(label='Plant 1', options=['One', 'Plant 1'], label_visibility='collapsed')
+
 
 with col2:
-    st.radio(label='test1', options=['One2', 'Two2'])
+    if user_choice == 2:
+        st.radio(label='Plant 2', options=['One', 'Plant 2'], default='Plant 2', label_visibility='collapsed')
+    else: 
+        st.radio(label='Plant 2', options=['One', 'Plant 2'], label_visibility='collapsed')
 
 with col3:
-    st.radio(label='test2', options=['One3', 'Two3'])
+    if user_choice == 3:
+        st.radio(label='Plant 3', options=['One', 'Plant 3'], default='Plant 3', label_visibility='collapsed')
+    else: 
+        st.radio(label='Plant 3', options=['One', 'Plant 3'], label_visibility='collapsed')
 
 with col4:
-    st.radio(label='test3', options=['One4', 'Two4'])
+    if user_choice == 3:
+        st.radio(label='Customize', options=['One', 'Customize'], default='Customize', label_visibility='collapsed')
+    else: 
+        st.radio(label='Customize', options=['One', 'Customize'], label_visibility='collapsed')
