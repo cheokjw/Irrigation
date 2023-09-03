@@ -19,16 +19,16 @@ db = firestore.Client(credentials=creds)
 
 
 
-# Write Sample data into firestore
-doc_ref = db.collection('user1').document(str(curr))
-doc_ref.set({
-    'distance': 40,
-    'humidity': 10,
-    'lightIntensity': 60,
-    'moisture': 10,
-    'pH': 7,
-    'temperature': 28
-})
+# # Write Sample data into firestore
+# doc_ref = db.collection('user1').document(str(curr))
+# doc_ref.set({
+#     'distance': 40,
+#     'humidity': 10,
+#     'lightIntensity': 60,
+#     'moisture': 10,
+#     'pH': 7,
+#     'temperature': 28
+# })
 
 
 # Read all posts 

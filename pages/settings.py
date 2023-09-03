@@ -15,8 +15,14 @@ db = firestore.Client(credentials=creds)
 
 
 
-# Read all posts 
+# Read current user collection
 post_ref = db.collection('currentUser')
+
+# Get current user
+currData = db.collection('currentUser').document('curr').get().to_dict()
+
+# Set current user
+user = currData['user']
 # ----------------------------------------------------------
 
 
@@ -46,16 +52,21 @@ st.markdown(
 # Display obtained data
 st.header('Smart Irrigation System')
 
-user_choice = 1
 
 # col1, col2, col3 represents the preset plant
 col1, col2, col3= st.columns(3)
-# First Radio button has been deselected 
+
 with col1:
-    if user_choice == 1:
-        st.radio(label='Plant 1', options=['One', 'Plant 1'], index=1, label_visibility='collapsed', key='setting1')
-    else: 
-        st.radio(label='Plant 1', options=['One', 'Plant 1'], label_visibility='collapsed', key='setting1')
+    if st.button('Plant 1🪴'):
+        db.collection(user).document('userInfo').set({
+            'currPlant': 1,
+            'distance': 30,
+            'humidity': 10,
+            'lightIntensity': 60,
+            'moisture': 10,
+            'pH': 7,
+            'temperature': 28
+        })
 
     im_plant1 = Image.open('asset/plant1.jpg')
     st.image(im_plant1)
@@ -70,10 +81,16 @@ with col1:
 
 
 with col2:
-    if user_choice == 2:
-        st.radio(label='Plant 2', options=['One', 'Plant 2'], index=1, label_visibility='collapsed', key='setting2')
-    else: 
-        st.radio(label='Plant 2', options=['One', 'Plant 2'], label_visibility='collapsed', key='setting2')
+    if st.button('Plant 2🪴'):
+        db.collection(user).document('userInfo').set({
+            'currPlant': 2,
+            'distance': 26,
+            'humidity': 40,
+            'lightIntensity': 0,
+            'moisture': 10,
+            'pH': 8,
+            'temperature': 30
+        })
     
     im_plant1 = Image.open('asset/plant2.jpg')
     st.image(im_plant1)
@@ -87,10 +104,16 @@ with col2:
     """)
 
 with col3:
-    if user_choice == 3:
-        st.radio(label='Plant 3', options=['One', 'Plant 3'],index=1, label_visibility='collapsed', key='setting3')
-    else: 
-        st.radio(label='Plant 3', options=['One', 'Plant 3'], label_visibility='collapsed', key='setting3')
+    if st.button('Plant 3🪴'):
+        db.collection(user).document('userInfo').set({
+            'currPlant': 3,
+            'distance': 40,
+            'humidity': 5,
+            'lightIntensity': 20,
+            'moisture': 40,
+            'pH': 5,
+            'temperature': 20
+        })
 
     im_plant1 = Image.open('asset/plant3.jpg')
     st.image(im_plant1)
@@ -105,10 +128,17 @@ with col3:
 
 st.markdown("""---""")
 
-if user_choice == 4:
-    st.radio(label='Customize', options=['One', 'Customize'], index=1, label_visibility='collapsed', key='setting4')
-else: 
-    st.radio(label='Customize', options=['One', 'Customize'], label_visibility='collapsed', key='setting4')
+# Customizable plant
+if st.button('Customize 🪴'):
+        db.collection(user).document('userInfo').set({
+            'currPlant': 3,
+            'distance': 40,
+            'humidity': 5,
+            'lightIntensity': 20,
+            'moisture': 40,
+            'pH': 5,
+            'temperature': 20
+        })
 
 # Check user selection
 user_select = [st.session_state.setting1,st.session_state.setting2,st.session_state.setting3,st.session_state.setting4]
