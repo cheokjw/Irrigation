@@ -4,6 +4,7 @@ import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 from google.cloud import firestore
 from google.oauth2 import service_account
+from PIL import Image
 
 
 # DATABASE ------------------------------------------------
@@ -56,6 +57,8 @@ with col1:
     else: 
         st.radio(label='Plant 1', options=['One', 'Plant 1'], label_visibility='collapsed', key='setting1')
 
+    im_plant1 = Image.open('asset/plant1.jpg')
+    st.image(im_plant1)
     st.write("""
     Distance Threshold    : 30 \n
     Humidity Threshold    : 10 \n
@@ -78,13 +81,12 @@ with col3:
     else: 
         st.radio(label='Plant 3', options=['One', 'Plant 3'], label_visibility='collapsed', key='setting3')
 
+st.markdown("""---""")
 
 if user_choice == 4:
     st.radio(label='Customize', options=['One', 'Customize'], index=1, label_visibility='collapsed', key='setting4')
 else: 
     st.radio(label='Customize', options=['One', 'Customize'], label_visibility='collapsed', key='setting4')
-
-st.markdown("""---""")
 
 # Check user selection
 user_select = [st.session_state.setting1,st.session_state.setting2,st.session_state.setting3,st.session_state.setting4]
