@@ -52,7 +52,7 @@ st.markdown(
 # Display obtained data
 st.header('Smart Irrigation System')
 
-userData = db.collection(user).document(userInfo).get().todict()
+userData = db.collection(user).document('userInfo').get().todict()
 currPlant = userData['currPlant']
 
 plantText = ''
