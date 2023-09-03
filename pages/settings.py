@@ -129,14 +129,25 @@ with col3:
 st.markdown("""---""")
 
 # Customizable plant
+st.header('Customize Plant Settings')
+
+distance = st.slider('Distance', 0, 250, 500)
+humidity = st.slider('Humidity', 0, 50, 100)
+light = st.slider('Light Intensity', 0, 50, 100)
+moisture = st.slider('Moisture Level', 0, 50, 100)
+ph = st.slider('pH Level', 0, 7, 14)
+temp = st.slider('Temperature', 0, 25, 50)
+
+
+
 if st.button('Customize 🪴'):
         db.collection(user).document('userInfo').set({
             'currPlant': 3,
-            'distance': 40,
-            'humidity': 5,
-            'lightIntensity': 20,
-            'moisture': 40,
-            'pH': 5,
-            'temperature': 20
+            'distance': distance,
+            'humidity': humidity,
+            'lightIntensity': light,
+            'moisture': moisture,
+            'pH': ph,
+            'temperature': temp
         })
 
