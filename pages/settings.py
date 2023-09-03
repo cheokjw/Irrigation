@@ -140,7 +140,3 @@ if st.button('Customize 🪴'):
             'temperature': 20
         })
 
-# Check user selection
-user_select = [st.session_state.setting1,st.session_state.setting2,st.session_state.setting3,st.session_state.setting4]
-
-st.write(user_select)
