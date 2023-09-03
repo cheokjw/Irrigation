@@ -75,7 +75,7 @@ with col2:
     else: 
         st.radio(label='Plant 2', options=['One', 'Plant 2'], label_visibility='collapsed', key='setting2')
     
-    im_plant1 = Image.open('asset/plant1.jpg')
+    im_plant1 = Image.open('asset/plant2.jpg')
     st.image(im_plant1)
     st.markdown("""
     Distance Threshold    : 26 \n
@@ -92,7 +92,7 @@ with col3:
     else: 
         st.radio(label='Plant 3', options=['One', 'Plant 3'], label_visibility='collapsed', key='setting3')
 
-    im_plant1 = Image.open('asset/plant1.jpg')
+    im_plant1 = Image.open('asset/plant3.jpg')
     st.image(im_plant1)
     st.markdown("""
     Distance Threshold    : 40 \n
