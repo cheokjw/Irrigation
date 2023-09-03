@@ -44,7 +44,7 @@ st.markdown(
 # Display obtained data
 st.header('Smart Irrigation System')
 
-user_choice = 2
+user_choice = 1
 
 # col1, col2, col3 represents the preset plant
 # col4 represents the user modified plant settings
