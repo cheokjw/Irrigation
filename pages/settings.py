@@ -84,6 +84,8 @@ if user_choice == 4:
 else: 
     st.radio(label='Customize', options=['One', 'Customize'], label_visibility='collapsed', key='setting4')
 
+st.markdown("""---""")
+
 # Check user selection
 user_select = [st.session_state.setting1,st.session_state.setting2,st.session_state.setting3,st.session_state.setting4]
 
