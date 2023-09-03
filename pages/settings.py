@@ -74,6 +74,7 @@ col1, col2, col3= st.columns(3)
 
 with col1:
     if st.button('Plant 1🪴'):
+        plantText = 'Plant 1'
         db.collection(user).document('userInfo').set({
             'currPlant': 1,
             'distance': 30,
@@ -98,6 +99,7 @@ with col1:
 
 with col2:
     if st.button('Plant 2🪴'):
+        plantText = 'Plant 2'
         db.collection(user).document('userInfo').set({
             'currPlant': 2,
             'distance': 26,
@@ -121,6 +123,7 @@ with col2:
 
 with col3:
     if st.button('Plant 3🪴'):
+        plantText = 'Plant 3'
         db.collection(user).document('userInfo').set({
             'currPlant': 3,
             'distance': 40,
@@ -157,6 +160,7 @@ temp = st.slider('Temperature', 0, 25, 50)
 
 
 if st.button('Customize 🪴'):
+        plantText = 'Customized Plant'
         db.collection(user).document('userInfo').set({
             'currPlant': 4,
             'distance': distance,
