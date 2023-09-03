@@ -5,9 +5,6 @@ from streamlit_extras.switch_page_button import switch_page
 from google.cloud import firestore
 from google.oauth2 import service_account
 
-now = datetime.now()
-curr = now.strftime("%d-%m-%Y %H:%M:%S")
-print(curr)
 
 # DATABASE ------------------------------------------------
 # Connect to firestore database by using JSON account key
