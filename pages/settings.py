@@ -49,4 +49,4 @@ st.header('Smart Irrigation System')
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.radio(['First', 'Second'])
+    st.radio(options=['One', 'Two'])
