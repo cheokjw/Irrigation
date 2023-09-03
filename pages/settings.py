@@ -50,7 +50,7 @@ st.markdown(
 
 
 # Display obtained data
-st.header('Smart Irrigation System')
+st.header('Plant SETTINGS 🛞')
 
 userData = db.collection(user).document('userInfo').get().to_dict()
 currPlant = userData['currPlant']
@@ -67,7 +67,7 @@ elif currPlant == 4:
 else:
     plantText = 'No Plant Selected'
 
-st.write(f'Your current setting : {plantText}')
+st.write(f'Your current setting : {plantText}\n\n')
 
 # col1, col2, col3 represents the preset plant
 col1, col2, col3= st.columns(3)
