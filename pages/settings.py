@@ -158,7 +158,7 @@ temp = st.slider('Temperature', 0, 25, 50)
 
 if st.button('Customize 🪴'):
         db.collection(user).document('userInfo').set({
-            'currPlant': 3,
+            'currPlant': 4,
             'distance': distance,
             'humidity': humidity,
             'lightIntensity': light,
