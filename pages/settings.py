@@ -52,6 +52,22 @@ st.markdown(
 # Display obtained data
 st.header('Smart Irrigation System')
 
+userData = db.collection(user).document(userInfo).get().todict()
+currPlant = userData['currPlant']
+
+plantText = ''
+if currPlant == 1:
+    plantText = 'Plant 1'
+elif currPlant == 2:
+    plantText = 'Plant 2'
+elif currPlant == 3:
+    plantText = 'Plant 3'
+elif currPlant == 4:
+    plantText = 'Customized Plant'
+else:
+    plantText = 'No Plant Selected'
+
+st.write(f'Your current setting : {plantText}')
 
 # col1, col2, col3 represents the preset plant
 col1, col2, col3= st.columns(3)
