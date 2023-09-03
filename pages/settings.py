@@ -78,4 +78,4 @@ else:
 # Check user selection
 user_select = [st.session_state.setting1,st.session_state.setting2,st.session_state.setting3,st.session_state.setting4]
 
-print(user_select)
+st.write(user_select)
