@@ -21,11 +21,6 @@ post_ref = db.collection('currentUser')
 
 
 # STREAMLIT ------------------------------------------------
-# SESSION Data =============
-# Store the initial value of widgets in session state
-if "setting" not in st.session_state:
-    st.session_state.setting = 'Plant 1'
-# ==========================
 
 
 # Page STYLE ===============
@@ -57,25 +52,30 @@ col1, col2, col3= st.columns(3)
 # First Radio button has been deselected 
 with col1:
     if user_choice == 1:
-        st.radio(label='Plant 1', options=['One', 'Plant 1'], index=1, label_visibility='collapsed', key='setting')
+        st.radio(label='Plant 1', options=['One', 'Plant 1'], index=1, label_visibility='collapsed', key='setting1')
     else: 
-        st.radio(label='Plant 1', options=['One', 'Plant 1'], label_visibility='collapsed', key='setting')
+        st.radio(label='Plant 1', options=['One', 'Plant 1'], label_visibility='collapsed', key='setting1')
 
 
 with col2:
     if user_choice == 2:
-        st.radio(label='Plant 2', options=['One', 'Plant 2'], index=1, label_visibility='collapsed', key='setting')
+        st.radio(label='Plant 2', options=['One', 'Plant 2'], index=1, label_visibility='collapsed', key='setting2')
     else: 
-        st.radio(label='Plant 2', options=['One', 'Plant 2'], label_visibility='collapsed', key='setting')
+        st.radio(label='Plant 2', options=['One', 'Plant 2'], label_visibility='collapsed', key='setting2')
 
 with col3:
     if user_choice == 3:
-        st.radio(label='Plant 3', options=['One', 'Plant 3'],index=1, label_visibility='collapsed', key='setting')
+        st.radio(label='Plant 3', options=['One', 'Plant 3'],index=1, label_visibility='collapsed', key='setting3')
     else: 
-        st.radio(label='Plant 3', options=['One', 'Plant 3'], label_visibility='collapsed', key='setting')
+        st.radio(label='Plant 3', options=['One', 'Plant 3'], label_visibility='collapsed', key='setting3')
 
 
 if user_choice == 4:
-    st.radio(label='Customize', options=['One', 'Customize'], index=1, label_visibility='collapsed', key='setting')
+    st.radio(label='Customize', options=['One', 'Customize'], index=1, label_visibility='collapsed', key='setting4')
 else: 
-    st.radio(label='Customize', options=['One', 'Customize'], label_visibility='collapsed', key='setting')
+    st.radio(label='Customize', options=['One', 'Customize'], label_visibility='collapsed', key='setting4')
+
+# Check user selection
+user_select = [st.session_state.setting1,st.session_state.setting2,st.session_state.setting3,st.session_state.setting4]
+
+print(user_select)
