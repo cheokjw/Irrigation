@@ -1,5 +1,6 @@
 import os
 import json
+import time
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 from google.cloud import firestore
@@ -84,6 +85,7 @@ with col1:
             'pH': 7,
             'temperature': 28
         })
+        time.sleep(3)
 
     im_plant1 = Image.open('asset/plant1.jpg')
     st.image(im_plant1)
@@ -109,6 +111,7 @@ with col2:
             'pH': 8,
             'temperature': 30
         })
+        time.sleep(3)
     
     im_plant1 = Image.open('asset/plant2.jpg')
     st.image(im_plant1)
@@ -133,6 +136,7 @@ with col3:
             'pH': 5,
             'temperature': 20
         })
+        time.sleep(3)
 
     im_plant1 = Image.open('asset/plant3.jpg')
     st.image(im_plant1)
@@ -170,4 +174,5 @@ if st.button('Customize 🪴'):
             'pH': ph,
             'temperature': temp
         })
+        time.sleep(3)
 
