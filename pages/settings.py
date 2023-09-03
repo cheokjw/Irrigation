@@ -48,5 +48,16 @@ st.header('Smart Irrigation System')
 # col4 represents the user modified plant settings
 col1, col2, col3, col4 = st.columns(4)
 
+
+# First Radio button has been deselected 
 with col1:
+    st.radio(label='test', options=['One', 'Two'])
+
+with col2:
+    st.radio(label='test', options=['One', 'Two'])
+
+with col3:
+    st.radio(label='test', options=['One', 'Two'])
+
+with col4:
     st.radio(label='test', options=['One', 'Two'])
