@@ -85,7 +85,6 @@ with col1:
             'pH': 7,
             'temperature': 28
         })
-        time.sleep(3)
 
     im_plant1 = Image.open('asset/plant1.jpg')
     st.image(im_plant1)
@@ -111,7 +110,6 @@ with col2:
             'pH': 8,
             'temperature': 30
         })
-        time.sleep(3)
     
     im_plant1 = Image.open('asset/plant2.jpg')
     st.image(im_plant1)
@@ -136,7 +134,6 @@ with col3:
             'pH': 5,
             'temperature': 20
         })
-        time.sleep(3)
 
     im_plant1 = Image.open('asset/plant3.jpg')
     st.image(im_plant1)
@@ -154,12 +151,12 @@ st.markdown("""---""")
 # Customizable plant
 st.header('Customize Plant Settings')
 
-distance = st.slider('Distance', 0, 250, 500)
-humidity = st.slider('Humidity', 0, 50, 100)
-light = st.slider('Light Intensity', 0, 50, 100)
-moisture = st.slider('Moisture Level', 0, 50, 100)
-ph = st.slider('pH Level', 0, 7, 14)
-temp = st.slider('Temperature', 0, 25, 50)
+distance = st.slider('Distance', 0, 500, userData['distance'])
+humidity = st.slider('Humidity', 0, 100, userData['humidity'])
+light = st.slider('Light Intensity', 0, 100, userData['lightIntensity'])
+moisture = st.slider('Moisture Level', 0, 100, userData['moisture'])
+ph = st.slider('pH Level', 0, 14, userData['pH'])
+temp = st.slider('Temperature', 0, 50, userData['temperature'])
 
 
 
@@ -174,5 +171,4 @@ if st.button('Customize 🪴'):
             'pH': ph,
             'temperature': temp
         })
-        time.sleep(3)
 
