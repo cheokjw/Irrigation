@@ -59,7 +59,7 @@ with col1:
 
     im_plant1 = Image.open('asset/plant1.jpg')
     st.image(im_plant1)
-    st.write("""
+    st.markdown("""
     Distance Threshold    : 30 \n
     Humidity Threshold    : 10 \n
     Light Intensity       : 60 \n
@@ -74,12 +74,34 @@ with col2:
         st.radio(label='Plant 2', options=['One', 'Plant 2'], index=1, label_visibility='collapsed', key='setting2')
     else: 
         st.radio(label='Plant 2', options=['One', 'Plant 2'], label_visibility='collapsed', key='setting2')
+    
+    im_plant1 = Image.open('asset/plant1.jpg')
+    st.image(im_plant1)
+    st.markdown("""
+    Distance Threshold    : 26 \n
+    Humidity Threshold    : 40 \n
+    Light Intensity       : 0 \n
+    Moisure Threshold     : 10 \n 
+    pH Threshold          : 8  \n
+    Temperature Threshold : 30 \n
+    """)
 
 with col3:
     if user_choice == 3:
         st.radio(label='Plant 3', options=['One', 'Plant 3'],index=1, label_visibility='collapsed', key='setting3')
     else: 
         st.radio(label='Plant 3', options=['One', 'Plant 3'], label_visibility='collapsed', key='setting3')
+
+    im_plant1 = Image.open('asset/plant1.jpg')
+    st.image(im_plant1)
+    st.markdown("""
+    Distance Threshold    : 40 \n
+    Humidity Threshold    : 5 \n
+    Light Intensity       : 20 \n
+    Moisure Threshold     : 40 \n 
+    pH Threshold          : 5  \n
+    Temperature Threshold : 20 \n
+    """)
 
 st.markdown("""---""")
 
