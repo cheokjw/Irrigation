@@ -54,10 +54,10 @@ with col1:
     st.radio(label='test', options=['One', 'Two'])
 
 with col2:
-    st.radio(label='test', options=['One', 'Two'])
+    st.radio(label='test1', options=['One2', 'Two2'])
 
 with col3:
-    st.radio(label='test', options=['One', 'Two'])
+    st.radio(label='test2', options=['One3', 'Two3'])
 
 with col4:
-    st.radio(label='test', options=['One', 'Two'])
+    st.radio(label='test3', options=['One4', 'Two4'])
