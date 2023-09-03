@@ -1,8 +1,9 @@
 # Import Necessary Libraries
-import streamlit as st
 from datetime import datetime
 import os
 import json
+import streamlit as st
+from streamlit_extras.switch_page_button import switch_page
 from google.cloud import firestore
 from google.oauth2 import service_account
 
@@ -39,22 +40,25 @@ post_ref = db.collection('user1')
 # STREAMLIT ------------------------------------------------
 
 # Page STYLE ===============
-# st.set_page_config(initial_sidebar_state="collapsed")
-# st.markdown(
-#     """
-# <style>
-#     [data-testid="collapsedControl"] {
-#         display: none
-#     }
-# </style>
-# """,
-#     unsafe_allow_html=True,
-# )
+st.set_page_config(initial_sidebar_state="collapsed")
+st.markdown(
+    """
+<style>
+    [data-testid="collapsedControl"] {
+        display: none
+    }
+</style>
+""",
+    unsafe_allow_html=True,
+)
 # ============================
 
 
 # Display obtained data
 st.header('Smart Irrigation System')
+
+if st.button('🛞'):
+    switch_page('settings')
 
 for doc in post_ref.stream():
     st.write(f'The id is: {doc.id}')
