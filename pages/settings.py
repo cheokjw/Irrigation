@@ -57,12 +57,12 @@ with col1:
         st.radio(label='Plant 1', options=['One', 'Plant 1'], label_visibility='collapsed', key='setting1')
 
     st.write("""
-    Distance Threshold    : 30
-    Humidity Threshold    : 10
-    Light Intensity       : 60
-    Moisure Threshold     : 10
-    pH Threshold          : 7
-    Temperature Threshold : 28
+    Distance Threshold    : 30 \n
+    Humidity Threshold    : 10 \n
+    Light Intensity       : 60 \n
+    Moisure Threshold     : 10 \n 
+    pH Threshold          : 7  \n
+    Temperature Threshold : 28 \n
     """)
 
 
