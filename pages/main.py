@@ -73,7 +73,6 @@ df = pd.DataFrame({'datetime': ['01-09-2023 15:23:23'],
 for doc in post_ref.stream():
     if doc.id == 'secret':
         break
-    st.dataframe(df)
     data = doc.to_dict()
     temp_df = pd.DataFrame({
         'datetime': [doc.id],
@@ -84,7 +83,6 @@ for doc in post_ref.stream():
         'pH': [data["pH"]],
         'temperature': [data["temperature"]]
     })
-    st.dataframe(temp_df)
     df = pd.concat([df, temp_df], ignore_index = True)
 
 st.dataframe(df)
