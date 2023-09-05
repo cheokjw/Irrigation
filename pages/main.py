@@ -69,9 +69,9 @@ df = pd.DataFrame({'datetime': ['2023-9-5 15:23:23'],
                     'pH': [7], 
                     'temperature':[28]})
 
+
 for doc in post_ref.stream():
-    st.write(f'The id is: {doc.id}')
-    st.write(f'The contents are: ', doc.to_dict())
+    st.dataframe(df)
     data = doc.to_dict()
     st.write(f'pH :{data["humidity"]}, {type(data["humidity"])}')
     temp_df = pd.DataFrame({
