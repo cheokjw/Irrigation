@@ -74,10 +74,16 @@ for doc in post_ref.stream():
     st.dataframe(df)
     data = doc.to_dict()
     st.write(f'pH :{data["humidity"]}, {type(data["humidity"])}')
-    row = pd.Series(
-        [doc.id, data["distance"], data["humidity"], data["lightIntensity"], data["moisture"], data["pH"], data["temperature"]], index=df.columns
-    )
-    df.append(row)
+    temp_df = pd.DataFrame({
+        'datetime': [doc.id],
+        'distance': [data["distance"]],
+        'humidity': [data["humidity"]],
+        'lightIntensity': [data["lightIntensity"]],
+        'moisture': [data["moisture"]],
+        'pH': [data["pH"]],
+        'temperature': [data["temperature"]]
+    })
+    df.concat([df, temp_df], ignore_index = True)
 
 st.dataframe(df)
 
