@@ -71,9 +71,7 @@ df = pd.DataFrame({'datetime': ['2023-9-5 15:23:23'],
 
 
 for doc in post_ref.stream():
-    st.dataframe(df)
     data = doc.to_dict()
-    st.write(f'pH :{data["humidity"]}, {type(data["humidity"])}')
     temp_df = pd.DataFrame({
         'datetime': [doc.id],
         'distance': [data["distance"]],
@@ -83,7 +81,6 @@ for doc in post_ref.stream():
         'pH': [data["pH"]],
         'temperature': [data["temperature"]]
     })
-    st.dataframe(temp_df)
     df = pd.concat([df, temp_df], ignore_index = True)
 
 st.dataframe(df)
