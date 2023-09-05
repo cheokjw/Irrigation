@@ -61,13 +61,13 @@ st.header('Smart Irrigation System')
 if st.button('🛞'):
     switch_page('settings')
 
-    df = pd.DataFrame({'datetime': ['2023-9-5 15:23:23'], 
-                       'distance': [10], 
-                       'humidity':[10], 
-                       'lightIntensity':[10], 
-                       'moisture':[10],
-                       'pH': [7], 
-                       'temperature':[28]})
+df = pd.DataFrame({'datetime': ['2023-9-5 15:23:23'], 
+                    'distance': [10], 
+                    'humidity':[10], 
+                    'lightIntensity':[10], 
+                    'moisture':[10],
+                    'pH': [7], 
+                    'temperature':[28]})
 
 for doc in post_ref.stream():
     st.write(f'The id is: {doc.id}')
