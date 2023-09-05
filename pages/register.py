@@ -68,5 +68,5 @@ if st.button('Register now'):
 
         # Set current user
         curr_user = db.collection('currentUser').document('curr')
-        curr_user.set({'password': curr_rfid, 'user':username})
+        curr_user.set({'rfid': curr_rfid, 'user':username})
         switch_page('main')
