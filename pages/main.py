@@ -61,13 +61,13 @@ st.header('Smart Irrigation System')
 if st.button('🛞'):
     switch_page('settings')
 
-    df = pd.DataFrame({'datetime': '2023-9-5 15:23:23', 
-                       'distance': 10, 
-                       'humidity':10, 
-                       'lightIntensity':10, 
-                       'moisture':10,
-                       'pH': 7, 
-                       'temperature':28})
+    df = pd.DataFrame({'datetime': ['2023-9-5 15:23:23'], 
+                       'distance': [10], 
+                       'humidity':[10], 
+                       'lightIntensity':[10], 
+                       'moisture':[10],
+                       'pH': [7], 
+                       'temperature':[28]})
 
 for doc in post_ref.stream():
     st.write(f'The id is: {doc.id}')
@@ -75,13 +75,13 @@ for doc in post_ref.stream():
     data = doc.to_dict()
     st.write(f'pH :{data["humidity"]}, {type(data["humidity"])}')
     temp_df = pd.DataFrame({
-        'datetime': doc.id,
-        'distance': data["distance"],
-        'humidity': data["humidity"],
-        'lightIntensity': data["lightIntensity"],
-        'moisture': data["moisture"],
-        'pH': data["pH"],
-        'temperature': data["temperature"]
+        'datetime': [doc.id],
+        'distance': [data["distance"]],
+        'humidity': [data["humidity"]],
+        'lightIntensity': [data["lightIntensity"]],
+        'moisture': [data["moisture"]],
+        'pH': [data["pH"]],
+        'temperature': [data["temperature"]]
     })
     df.append(temp_df)
 
