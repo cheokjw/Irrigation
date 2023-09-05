@@ -23,9 +23,6 @@ post_ref = db.collection('user1')
 # ----------------------------------------------------------
 
 
-# STREAMLIT FUNCTIONS --------------------------------------
-# ----------------------------------------------------------
-
 
 # STREAMLIT ------------------------------------------------
 
@@ -70,6 +67,9 @@ if st.button('Login'):
             st.warning("Username and RFID card/tag did not match", icon='🚨')
         else:
             st.warning("Please scan RFID card/ tag", icon='🚨')
+
+elif st.button('Don\'t have an account yet? Click to Register'):
+    switch_page('register')
 # =================================================================================
 
 # ----------------------------------------------------------
