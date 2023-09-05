@@ -83,6 +83,7 @@ for doc in post_ref.stream():
         'pH': [data["pH"]],
         'temperature': [data["temperature"]]
     })
+    st.dataframe(temp_df)
     df.concat([df, temp_df], ignore_index = True)
 
 st.dataframe(df)
