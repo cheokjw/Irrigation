@@ -41,9 +41,12 @@ username = st.text_input('Register Username')
 st.write('Please scan your RFID card before press button')
 
 if st.button('Register now'):
-    curr_rfid = db.collection('currentUser').document('curr').get().to_dict()
+    curr_data = db.collection('currentUser').document('curr').get().to_dict()
+    curr_rfid = curr_data['rfid']
     if username in userList:
         st.warning("The user has been registered", icon='🚨')
+    elif (len(username) == 0) or username == 'currentUser':
+        st.warning("Invalid username", icon='🚨')
     elif curr_rfid == 'None':
         st.warning("No RFID has been detected (Please scan your card)", icon='🚨')
     else:
@@ -62,4 +65,7 @@ if st.button('Register now'):
         doc_ref_pass = db.collection(username).document('secret')
         doc_ref_pass.set({'password': curr_rfid})
         st.success('Registered Successfully')
+
+        # Set current user
+        curr_user = db.collection('currentUser').document('curr').collection('user').set(username)
         switch_page('main')
