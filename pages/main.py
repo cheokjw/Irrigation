@@ -73,7 +73,7 @@ for doc in post_ref.stream():
     st.write(f'The id is: {doc.id}')
     st.write(f'The contents are: ', doc.to_dict())
     data = doc.to_dict()
-    st.wrte(f'pH :{data["humidity"]}, {type(data["humidity"])}')
+    st.write(f'pH :{data["humidity"]}, {type(data["humidity"])}')
     # data = doc.to_dict()
     # temp_df = pd.DataFrame({
     #     'datetime': doc.id,
