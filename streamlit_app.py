@@ -61,9 +61,9 @@ if st.button('Login'):
         userInfo = db.collection(username).document('secret').get().to_dict()
         currUser = db.collection('currentUser').document('curr').get().to_dict()
 
-        if userInfo['rfid'] == currUser['rfid']:
+        if userInfo['password'] == currUser['rfid']:
             switch_page('main')
-        elif userInfo['rfid'] != currUser['rfid']:
+        elif userInfo['password'] != currUser['rfid']:
             st.warning("Username and RFID card/tag did not match", icon='🚨')
         else:
             st.warning("Please scan RFID card/ tag", icon='🚨')
