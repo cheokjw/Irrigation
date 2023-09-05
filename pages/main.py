@@ -70,17 +70,19 @@ if st.button('🛞'):
                        'temperature':28})
 
 for doc in post_ref.stream():
-    data = doc.to_dict()
-    temp_df = pd.DataFrame({
-        'datetime': doc.id,
-        'distance': int(data['distance']),
-        'humidity': int(data['humidity']),
-        'lightIntensity': int(data['lightIntensity']),
-        'moisture': int(data['moisture']),
-        'pH': int(data['pH']),
-        'temperature': int(data['temperature'])
-    })
-    df.append(temp_df)
+    st.write(f'The id is: {doc.id}')
+    st.write(f'The contents are: ', doc.to_dict())
+    # data = doc.to_dict()
+    # temp_df = pd.DataFrame({
+    #     'datetime': doc.id,
+    #     'distance': int(data['distance']),
+    #     'humidity': int(data['humidity']),
+    #     'lightIntensity': int(data['lightIntensity']),
+    #     'moisture': int(data['moisture']),
+    #     'pH': int(data['pH']),
+    #     'temperature': int(data['temperature'])
+    # })
+    # df.append(temp_df)
 
 st.dataframe(df)
 
