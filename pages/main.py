@@ -74,17 +74,16 @@ for doc in post_ref.stream():
     st.write(f'The contents are: ', doc.to_dict())
     data = doc.to_dict()
     st.write(f'pH :{data["humidity"]}, {type(data["humidity"])}')
-    # data = doc.to_dict()
-    # temp_df = pd.DataFrame({
-    #     'datetime': doc.id,
-    #     'distance': int(data['distance']),
-    #     'humidity': int(data['humidity']),
-    #     'lightIntensity': int(data['lightIntensity']),
-    #     'moisture': int(data['moisture']),
-    #     'pH': int(data['pH']),
-    #     'temperature': int(data['temperature'])
-    # })
-    # df.append(temp_df)
+    temp_df = pd.DataFrame({
+        'datetime': doc.id,
+        'distance': data["distance"],
+        'humidity': data["humidity"],
+        'lightIntensity': data["lightIntensity"],
+        'moisture': data["moisture"],
+        'pH': data["pH"],
+        'temperature': data["temperature"]
+    })
+    df.append(temp_df)
 
 st.dataframe(df)
 
