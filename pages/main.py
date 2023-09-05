@@ -87,6 +87,7 @@ for doc in post_ref.stream():
 
 st.dataframe(df)
 df['datetime'] = pd.to_datetime(df['datetime'], format='%d-%m-%Y %H:%M:%S')
+st.line_chart(df[['datetime', 'moisture']])
 # ----------------------------------------------------------
 
 
