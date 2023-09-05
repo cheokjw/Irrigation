@@ -73,12 +73,12 @@ for doc in post_ref.stream():
     data = doc.to_dict()
     temp_df = pd.DataFrame({
         'datetime': doc.id,
-        'distance': data['distance'],
-        'humidity': data['humidity'],
-        'lightIntensity': data['lightIntensity'],
-        'moisture': data['moisture'],
-        'pH': data['pH'],
-        'temperature': data['temperature']
+        'distance': int(data['distance']),
+        'humidity': int(data['humidity']),
+        'lightIntensity': int(data['lightIntensity']),
+        'moisture': int(data['moisture']),
+        'pH': int(data['pH']),
+        'temperature': int(data['temperature'])
     })
     df.append(temp_df)
 
