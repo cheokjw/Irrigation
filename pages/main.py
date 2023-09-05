@@ -84,7 +84,7 @@ for doc in post_ref.stream():
         'temperature': [data["temperature"]]
     })
     st.dataframe(temp_df)
-    df.concat([df, temp_df], ignore_index = True)
+    df = pd.concat([df, temp_df], ignore_index = True)
 
 st.dataframe(df)
 
