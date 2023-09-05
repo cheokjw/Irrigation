@@ -3,6 +3,7 @@ from datetime import datetime
 import os
 import json
 import streamlit as st
+import pandas as pd
 from streamlit_extras.switch_page_button import switch_page
 from google.cloud import firestore
 from google.oauth2 import service_account
@@ -17,7 +18,7 @@ key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
 db = firestore.Client(credentials=creds)
 
-
+# TODO: ADD LOGOUT BUTTON, SUBSCRIBE MQTT
 
 # # Write Sample data into firestore
 # doc_ref = db.collection('user1').document(str(curr))
@@ -60,9 +61,22 @@ st.header('Smart Irrigation System')
 if st.button('🛞'):
     switch_page('settings')
 
+df = pd.DataFrame(columns=['datetime', 'distance', 'humidity', 'lightIntensity', 'moisture', 'pH', 'temperature'])
+
 for doc in post_ref.stream():
-    st.write(f'The id is: {doc.id}')
-    st.write(f'The contents are: ', doc.to_dict())
+    data = doc.to_dict()
+    temp_df = pd.DataFrame({
+        'datetime': doc.id,
+        'distance': data['distance'],
+        'humidity': data['humidity'],
+        'lightIntensity': data['lightIntensity'],
+        'moisture': data['moisture'],
+        'pH': data['pH'],
+        'temperature': data['temperature']
+    })
+    df.append(temp_df)
+
+st.dataframe(df)
 
 # ----------------------------------------------------------
 
