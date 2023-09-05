@@ -61,7 +61,13 @@ st.header('Smart Irrigation System')
 if st.button('🛞'):
     switch_page('settings')
 
-df = pd.DataFrame(columns=['datetime', 'distance', 'humidity', 'lightIntensity', 'moisture', 'pH', 'temperature'])
+    df = pd.DataFrame({'datetime': '2023-9-5 15:23:23', 
+                       'distance': 10, 
+                       'humidity':10, 
+                       'lightIntensity':10, 
+                       'moisture':10,
+                       'pH': 7, 
+                       'temperature':28})
 
 for doc in post_ref.stream():
     data = doc.to_dict()
