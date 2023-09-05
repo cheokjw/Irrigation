@@ -58,7 +58,7 @@ if st.button('Login'):
     elif username not in userList:
         st.warning("Username has not been registered", icon='🚨')
     else:
-        userInfo = db.collection(username).document('userInfo').get().to_dict()
+        userInfo = db.collection(username).document('secret').get().to_dict()
         currUser = db.collection('currentUser').document('curr').get().to_dict()
 
         if userInfo['rfid'] == currUser['rfid']:
