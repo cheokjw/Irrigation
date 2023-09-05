@@ -61,7 +61,7 @@ st.header('Smart Irrigation System')
 if st.button('🛞'):
     switch_page('settings')
 
-df = pd.DataFrame({'datetime': ['2023-9-5 15:23:23'], 
+df = pd.DataFrame({'datetime': ['01-09-2023 15:23:23'], 
                     'distance': [10], 
                     'humidity':[10], 
                     'lightIntensity':[10], 
@@ -71,6 +71,8 @@ df = pd.DataFrame({'datetime': ['2023-9-5 15:23:23'],
 
 
 for doc in post_ref.stream():
+    if doc.id == 'secret':
+        break
     st.dataframe(df)
     data = doc.to_dict()
     temp_df = pd.DataFrame({
