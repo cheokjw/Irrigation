@@ -91,14 +91,14 @@ df['datetime'] = pd.to_datetime(df['datetime'], format='%d-%m-%Y %H:%M:%S')
 st.title('Distance Graph')
 st.line_chart(data=df[['datetime', 'distance']], x='datetime', y ='distance')
 
-st.title('Humidity Graph')
-st.line_chart(data=df[['datetime', 'humidity']], x='datetime', y ='humidity')
+st.title('Humidity & Moisture Graph')
+st.line_chart(data=df[['datetime', 'humidity', 'moisture']], x='datetime', y =['humidity', 'moisture'])
 
 st.title('Temperature & Light Intensity Graph')
 st.line_chart(data=df[['datetime', 'temperature', 'lightIntensity']], x='datetime', y =['temperature', 'lightIntensity'])
 
-st.title('Humidity Graph')
-st.line_chart(data=df[['datetime', 'humidity']], x='datetime', y ='humidity')
+st.title('pH Graph')
+st.line_chart(data=df[['datetime', 'pH']], x='datetime', y ='pH')
 # ----------------------------------------------------------
 
 
