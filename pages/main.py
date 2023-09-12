@@ -88,8 +88,11 @@ for doc in post_ref.stream():
 st.dataframe(df)
 
 df['datetime'] = pd.to_datetime(df['datetime'], format='%d-%m-%Y %H:%M:%S')
-st.write(df.dtypes)
+st.title('Distance Graph')
 st.line_chart(data=df[['datetime', 'distance']], x='datetime', y ='distance')
+
+st.title('Humidity Graph')
+st.line_chart(data=df[['datetime', 'humidity']], x='datetime', y ='humidity')
 # ----------------------------------------------------------
 
 
