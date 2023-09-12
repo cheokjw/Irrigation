@@ -95,7 +95,7 @@ st.title('Humidity Graph')
 st.line_chart(data=df[['datetime', 'humidity']], x='datetime', y ='humidity')
 
 st.title('Temperature & Light Intensity Graph')
-st.line_chart(data=df[['datetime', 'temperature', 'lightIntensity']], x='datetime', y =['temperature', 'lightIntensity'], color=['#F5EE9E', '3B8EA5'])
+st.line_chart(data=df[['datetime', 'temperature', 'lightIntensity']], x='datetime', y =['temperature', 'lightIntensity'], color=['#FF0000', '0000FF'])
 
 st.title('Humidity Graph')
 st.line_chart(data=df[['datetime', 'humidity']], x='datetime', y ='humidity')
