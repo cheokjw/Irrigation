@@ -89,7 +89,7 @@ st.dataframe(df)
 
 df['datetime'] = pd.to_datetime(df['datetime'], format='%d-%m-%Y %H:%M:%S')
 st.write(df.dtypes)
-st.line_chart(df[['datetime', 'distance']])
+st.line_chart(data=df[['datetime', 'distance']], x='datetime', y ='distance')
 # ----------------------------------------------------------
 
 
