@@ -24,6 +24,9 @@ currData = db.collection('currentUser').document('curr').get().to_dict()
 
 # Set current user
 user = currData['user']
+
+current_user_ref =  db.collection('currentUser').document('curr').get().to_dict()
+post_ref2 = db.collection(current_user_ref['user'])
 # ----------------------------------------------------------
 
 
@@ -61,7 +64,7 @@ mac_ref = ''
 if st.button('Submit'):
     if len(mac_add) == 0:
         st.warning('Please enter MAC Adress of your device', icon='🚨')
-    elif mac_add not in [mac.id for mac in post_ref.stream()]:
+    elif mac_add not in [mac.id for mac in post_ref2.stream()]:
         st.warning('MAC Address does not exist in database', icon='🚨')
     else:
         userData = post_ref.document(mac_add).get().to_dict()
