@@ -66,7 +66,7 @@ if st.button('🛞'):
 
 # Ask user to enter MAC address
 mac_add = st.text_input('Enter MAC Address of your device')
-mac_ref = 'None'
+mac_ref = '00-B0-D0-63-C2-26'
 if st.button('Submit'):
     mac_ref = post_ref.document(mac_add).collection('data')
 
