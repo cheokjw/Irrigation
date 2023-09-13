@@ -82,7 +82,7 @@ df = pd.DataFrame({'datetime': ['01-09-2023 15:23:23'],
 st.write(mac_ref.stream())
 for doc in mac_ref.stream():
     data = doc.to_dict()
-    st.write(data)
+    st.write('Test')
     temp_df = pd.DataFrame({
         'datetime': [doc.id],
         'distance': [data["distance"]],
