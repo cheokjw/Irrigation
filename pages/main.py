@@ -96,7 +96,7 @@ for doc in mac_ref.stream():
 
 st.dataframe(df)
 
-df['datetime'] = pd.to_datetime(df['datetime'], format='%d-%m-%Y %H:%M:%S')
+df['datetime'] = pd.to_datetime(df['datetime'], format='%Y-%m-%d %H:%M:%S')
 st.title('Distance Graph')
 st.line_chart(data=df[['datetime', 'distance']], x='datetime', y ='distance')
 
