@@ -67,7 +67,7 @@ if st.button('Submit'):
     elif mac_add not in [mac.id for mac in post_ref2.stream()]:
         st.warning('MAC Address does not exist in database', icon='🚨')
     else:
-        userData = post_ref.document(mac_add).get().to_dict()
+        userData = post_ref2.document(mac_add).get().to_dict()
         st.write(userData)
         currPlant = userData['currPlant']
         plantText = ''
