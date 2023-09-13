@@ -68,7 +68,7 @@ if st.button('🛞'):
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = 'None'
 if st.button('Submit'):
-    mac_ref = post_ref.document(mac_ref).collection('data')
+    mac_ref = post_ref.document(mac_add).collection('data')
 
 
 df = pd.DataFrame({'datetime': ['01-09-2023 15:23:23'], 
