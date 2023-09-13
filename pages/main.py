@@ -33,7 +33,10 @@ db = firestore.Client(credentials=creds)
 
 
 # Read all posts 
-post_ref = db.collection('user1')
+current_user_ref =  db.collection('currentUser').document('curr').get().to_dict()
+post_ref = db.collection(current_user_ref['user'])
+
+
 # ----------------------------------------------------------
 
 
@@ -61,6 +64,13 @@ st.header('Smart Irrigation System')
 if st.button('🛞'):
     switch_page('settings')
 
+# Ask user to enter MAC address
+mac_add = st.text_input('Enter MAC Address of your device')
+mac_ref = 'None'
+if st.button('Submit'):
+    mac_ref = post_ref.document(mac_ref).collection('data')
+
+
 df = pd.DataFrame({'datetime': ['01-09-2023 15:23:23'], 
                     'distance': [10], 
                     'humidity':[10], 
@@ -70,9 +80,7 @@ df = pd.DataFrame({'datetime': ['01-09-2023 15:23:23'],
                     'temperature':[28]})
 
 
-for doc in post_ref.stream():
-    if doc.id == 'secret':
-        break
+for doc in mac_ref.stream():
     data = doc.to_dict()
     temp_df = pd.DataFrame({
         'datetime': [doc.id],
