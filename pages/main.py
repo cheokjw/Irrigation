@@ -79,7 +79,7 @@ df = pd.DataFrame({'datetime': ['01-09-2023 15:23:23'],
                     'pH': [7], 
                     'temperature':[28]})
 
-st.write(mac_ref)
+st.write(mac_ref.list_documents())
 for doc in mac_ref.stream():
     data = doc.to_dict()
     temp_df = pd.DataFrame({
