@@ -66,7 +66,7 @@ if st.button('🛞'):
 
 # Ask user to enter MAC address
 mac_add = st.text_input('Enter MAC Address of your device')
-mac_ref = 'None'
+mac_ref = ''
 if st.button('Submit'):
     mac_ref = post_ref.document(mac_add).collection('data')
 
@@ -79,7 +79,7 @@ df = pd.DataFrame({'datetime': ['2023-09-12 15:23:23'],
                     'pH': [7], 
                     'temperature':[28]})
 
-if mac_ref == 'None':
+if len(mac_ref) == 0:
     st.write('Please enter MAC Adress of your device')
 else:
     for doc in mac_ref.stream():
