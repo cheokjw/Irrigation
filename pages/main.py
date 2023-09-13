@@ -69,9 +69,9 @@ mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
 if st.button('Submit'):
     if len(mac_ref) == 0:
-        st.write('Please enter MAC Adress of your device')
-    elif mac_ref not in [mac for mac in post_ref.stream()]:
-        st.write('MAC Address does not exist in database')
+        st.warning('Please enter MAC Adress of your device')
+    elif mac_ref not in [mac.id for mac in post_ref.stream()]:
+        st.warning('MAC Address does not exist in database')
     else:
         mac_ref = post_ref.document(mac_add).collection('data')
 
@@ -85,7 +85,7 @@ df = pd.DataFrame({'datetime': ['2023-09-12 15:23:23'],
                     'temperature':[28]})
 
 if len(mac_ref) == 0:
-    st.write('Please enter MAC Adress of your device')
+    st.warning('Please enter MAC Adress of your device')
 else:
     for doc in mac_ref.stream():
         data = doc.to_dict()
