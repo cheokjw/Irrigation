@@ -68,7 +68,12 @@ if st.button('🛞'):
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
 if st.button('Submit'):
-    mac_ref = post_ref.document(mac_add).collection('data')
+    if len(mac_ref) == 0:
+        st.write('Please enter MAC Adress of your device')
+    elif mac_ref not in [mac for mac in post_ref.stream()]:
+        st.write('MAC Address does not exist in database')
+    else:
+        mac_ref = post_ref.document(mac_add).collection('data')
 
 
 df = pd.DataFrame({'datetime': ['2023-09-12 15:23:23'], 
