@@ -50,6 +50,7 @@ st.markdown(
 
 
 # Display obtained data
+with st.experimental_singleton:
 if st.button('BACK TO HOME PAGE 👈'):
     switch_page('main')
     
@@ -186,3 +187,4 @@ if st.button('Submit'):
                     'temperature': temp
                 })
 
+    
