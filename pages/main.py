@@ -97,8 +97,8 @@ if st.button('🛞'):
 # Ask user to enter MAC address
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
-if st.button('Submit'):
-    while True:
+while True:
+    if st.button('Submit'):
         if len(mac_add) == 0:
             st.warning('Please enter MAC Adress of your device', icon='🚨')
         elif mac_add not in [mac.id for mac in post_ref.stream()]:
@@ -140,7 +140,7 @@ if st.button('Submit'):
 
             st.title('pH Graph')
             st.line_chart(data=df[['datetime', 'pH']], x='datetime', y ='pH')
-            time.sleep(5)
+            time.sleep(20)
             # ----------------------------------------------------------
 
 
