@@ -68,7 +68,6 @@ if st.button('Submit'):
         st.warning('MAC Address does not exist in database', icon='🚨')
     else:
         userData = post_ref2.document(mac_add).get().to_dict()
-        st.write(userData)
         currPlant = userData['currPlant']
         plantText = ''
         if currPlant == 1:

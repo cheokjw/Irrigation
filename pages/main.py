@@ -7,6 +7,7 @@ import pandas as pd
 from streamlit_extras.switch_page_button import switch_page
 from google.cloud import firestore
 from google.oauth2 import service_account
+import paho.mqtt.client as mqtt
 
 now = datetime.now()
 curr = now.strftime("%d-%m-%Y %H:%M:%S")
@@ -35,10 +36,26 @@ db = firestore.Client(credentials=creds)
 # Read all posts 
 current_user_ref =  db.collection('currentUser').document('curr').get().to_dict()
 post_ref = db.collection(current_user_ref['user'])
-
-
 # ----------------------------------------------------------
 
+
+# MQTT -----------------------------------------------------
+def on_message(client, userdata, message):
+    st.write(f"Received Message on Topic {message.topic}: {message.payload.decode()}")
+
+# MQTT Configuration
+mqtt_broker = 'mqtt.eclipseprojects.io'
+mqtt_port = 1883 
+mqtt_topic = '$SYS/#'
+
+# Connect to MQTT client
+client = mqtt.Client()
+client.on_message = on_message
+client.connect(mqtt_broker, mqtt_port)
+client.subscribe(mqtt_topic)
+client.loop_start()
+
+# ----------------------------------------------------------
 
 
 # STREAMLIT ------------------------------------------------
