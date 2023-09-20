@@ -55,16 +55,16 @@ def on_message(client, userdata, msg):
     st.write(msg.topic+" "+str(msg.payload))
 
 # Connect to MQTT client
-client = mqtt.Client()
-client.on_connect = on_connect
-client.on_message = on_message
-client.connect("mqtt.eclipseprojects.io", 1883, 60)
-client.subscribe('paho/IOTtest')
+# client = mqtt.Client()
+# client.on_connect = on_connect
+# client.on_message = on_message
+# client.connect("mqtt.eclipseprojects.io", 1883, 60)
+# client.subscribe('paho/IOTtest')
 
-# handles reconnecting.
-# Other loop*() functions are available that give a threaded interface and a
-# manual interface.
-client.loop()
+# # handles reconnecting.
+# # Other loop*() functions are available that give a threaded interface and a
+# # manual interface.
+# client.loop()
 # ----------------------------------------------------------
 
 
