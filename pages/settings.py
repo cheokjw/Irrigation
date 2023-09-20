@@ -58,6 +58,29 @@ st.header('Plant SETTINGS 🛞')
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
 
+# Test
+if st.button('Plant 1🪴'):
+    st.write('test')
+    post_ref2.document(mac_add).set({
+        'currPlant': 1,
+        'distance': 30,
+        'humidity': 10,
+        'lightIntensity': 60,
+        'moisture': 10,
+        'pH': 7,
+        'temperature': 28
+    })
+
+im_plant1 = Image.open('asset/plant1.jpg')
+st.image(im_plant1)
+st.markdown("""
+Distance Threshold    : 30 \n
+Humidity Threshold    : 10 \n
+Light Intensity       : 60 \n
+Moisure Threshold     : 10 \n 
+pH Threshold          : 7  \n
+Temperature Threshold : 28 \n
+""")
 
 # ----
 if st.button('Submit'):
@@ -86,6 +109,16 @@ if st.button('Submit'):
         col1, col2, col3= st.columns(3)
 
         with col1:
+            im_plant1 = Image.open('asset/plant1.jpg')
+            st.image(im_plant1)
+            st.markdown("""
+            Distance Threshold    : 30 \n
+            Humidity Threshold    : 10 \n
+            Light Intensity       : 60 \n
+            Moisure Threshold     : 10 \n 
+            pH Threshold          : 7  \n
+            Temperature Threshold : 28 \n
+            """)
             if st.button('Plant 1🪴'):
                 st.write('test')
                 post_ref2.document(mac_add).set({
@@ -98,30 +131,9 @@ if st.button('Submit'):
                     'temperature': 28
                 })
 
-            im_plant1 = Image.open('asset/plant1.jpg')
-            st.image(im_plant1)
-            st.markdown("""
-            Distance Threshold    : 30 \n
-            Humidity Threshold    : 10 \n
-            Light Intensity       : 60 \n
-            Moisure Threshold     : 10 \n 
-            pH Threshold          : 7  \n
-            Temperature Threshold : 28 \n
-            """)
 
 
         with col2:
-            if st.button('Plant 2🪴'):
-                plantText = 'Plant 2'
-                post_ref2.document(mac_add).set({
-                    'currPlant': 2,
-                    'distance': 26,
-                    'humidity': 40,
-                    'lightIntensity': 0,
-                    'moisture': 10,
-                    'pH': 8,
-                    'temperature': 30
-                })
             
             im_plant1 = Image.open('asset/plant2.jpg')
             st.image(im_plant1)
@@ -133,19 +145,19 @@ if st.button('Submit'):
             pH Threshold          : 8  \n
             Temperature Threshold : 30 \n
             """)
+            if st.button('Plant 2🪴'):
+                plantText = 'Plant 2'
+                post_ref2.document(mac_add).set({
+                    'currPlant': 2,
+                    'distance': 26,
+                    'humidity': 40,
+                    'lightIntensity': 0,
+                    'moisture': 10,
+                    'pH': 8,
+                    'temperature': 30
+                })
 
         with col3:
-            if st.button('Plant 3🪴'):
-                plantText = 'Plant 3'
-                post_ref2.document(mac_add).set({
-                    'currPlant': 3,
-                    'distance': 40,
-                    'humidity': 5,
-                    'lightIntensity': 20,
-                    'moisture': 40,
-                    'pH': 5,
-                    'temperature': 20
-                })
 
             im_plant1 = Image.open('asset/plant3.jpg')
             st.image(im_plant1)
@@ -157,6 +169,17 @@ if st.button('Submit'):
             pH Threshold          : 5  \n
             Temperature Threshold : 20 \n
             """)
+            if st.button('Plant 3🪴'):
+                plantText = 'Plant 3'
+                post_ref2.document(mac_add).set({
+                    'currPlant': 3,
+                    'distance': 40,
+                    'humidity': 5,
+                    'lightIntensity': 20,
+                    'moisture': 40,
+                    'pH': 5,
+                    'temperature': 20
+                })
 
         st.markdown("""---""")
 
