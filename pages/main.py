@@ -8,7 +8,10 @@ from streamlit_extras.switch_page_button import switch_page
 from google.cloud import firestore
 from google.oauth2 import service_account
 import paho.mqtt.client as mqtt
-from thread_safe_st import ThreadSafeSt
+import threading
+import queue
+
+
 
 now = datetime.now()
 curr = now.strftime("%d-%m-%Y %H:%M:%S")
@@ -42,12 +45,12 @@ post_ref = db.collection(current_user_ref['user'])
 
 # MQTT -----------------------------------------------------
 
-thread_safe_st = ThreadSafeSt()
+q = queue.Queue()
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
-    thread_safe_st.markdown("Connected with result code "+str(rc))
+    q.put(str(rc))
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
@@ -55,20 +58,25 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
+    q.put(msg.payload)
     print(msg.topic+" "+str(msg.payload))
-    thread_safe_st.markdown(msg.topic+" "+str(msg.payload))
 
 # Connect to MQTT client
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect("mqtt.eclipseprojects.io", 1883, 60)
-client.subscribe('paho/IOTtest')
 
-# handles reconnecting.
-# Other loop*() functions are available that give a threaded interface and a
-# manual interface.
-client.loop_forever()
+
+def mqtt_thread():
+    mqtt_client.subscribe('paho/IOTtest')
+    mqtt_client.loop_start()
+
+
+thread = None
+running = True
+thread = threading.Thread(target=mqtt_thread)
+thread.start()
 # ----------------------------------------------------------
 
 
