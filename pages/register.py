@@ -43,24 +43,32 @@ st.write('Please scan your RFID card before press button')
 if st.button('Register now'):
     curr_data = db.collection('currentUser').document('curr').get().to_dict()
     curr_rfid = curr_data['rfid']
+
+
     if username in userList:
         st.warning("The user has been registered", icon='🚨')
+
+
     elif (len(username) == 0) or username == 'currentUser':
         st.warning("Invalid username", icon='🚨')
+
+
     elif curr_rfid == 'None':
         st.warning("No RFID has been detected (Please scan your card)", icon='🚨')
+
+
     else:
         # Register user into database
-        doc_ref_default = db.collection(username).document('userInfo')
-        doc_ref_default.set({
-            'currPlant': 1,
-            'distance': 30,
-            'humidity': 10,
-            'lightIntensity': 60,
-            'moisture': 10,
-            'pH': 7,
-            'temperature': 28
-        })
+        # doc_ref_default = db.collection(username).document('userInfo')
+        # doc_ref_default.set({
+        #     'currPlant': 1,
+        #     'distance': 30,
+        #     'humidity': 10,
+        #     'lightIntensity': 60,
+        #     'moisture': 10,
+        #     'pH': 7,
+        #     'temperature': 28
+        # })
 
         doc_ref_pass = db.collection(username).document('secret')
         doc_ref_pass.set({'password': curr_rfid})
@@ -68,5 +76,8 @@ if st.button('Register now'):
 
         # Set current user
         curr_user = db.collection('currentUser').document('curr')
-        curr_user.set({'rfid': curr_rfid, 'user':username})
+        curr_user.set({'rfid': 'None', 'user':username})
+
+        # Remove current rfid
+        
         switch_page('main')

@@ -84,9 +84,15 @@ st.markdown(
 # Display obtained data
 st.header('Smart Irrigation System')
 
+col1, col2 = st.columns(2)
 
-if st.button('🛞'):
-    switch_page('settings')
+with col1:
+    if st.button('🛞'):
+        switch_page('settings')
+
+with col2:
+    if st.button('Logout❗'):
+        switch_page('streamlit_app')
 
 # Ask user to enter MAC address
 mac_add = st.text_input('Enter MAC Address of your device')
@@ -102,10 +108,13 @@ if st.button('Submit'):
         st.warning('MAC Address does not exist in database', icon='🚨')
     else:
         while True:
+            # MQTT Part ----------------------------------------------------------
             message_container = st.empty()
             message = client.loop()
             if message:
                 message_container.text(message)
+
+            # Historical Data Part -----------------------------------------------
             mac_ref = post_ref.document(mac_add).collection('data')
             df = pd.DataFrame({'datetime': ['2023-09-12 15:23:23'], 
                         'distance': [10], 
