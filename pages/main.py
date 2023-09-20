@@ -97,8 +97,10 @@ if st.button('🛞'):
 # Ask user to enter MAC address
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
-while True:
-    if st.button('Submit'):
+if st.button('Submit'):
+    while True:
+        current_user_ref =  db.collection('currentUser').document('curr').get().to_dict()
+        post_ref = db.collection(current_user_ref['user'])
         if len(mac_add) == 0:
             st.warning('Please enter MAC Adress of your device', icon='🚨')
         elif mac_add not in [mac.id for mac in post_ref.stream()]:
