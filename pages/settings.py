@@ -61,6 +61,11 @@ st.header('Plant SETTINGS 🛞')
 
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
+
+# Test
+userData = post_ref2.document('00-B0-D0-63-C2-26').get().to_dict()
+st.write(userData)
+# ----
 if st.button('Submit'):
     if len(mac_add) == 0:
         st.warning('Please enter MAC Adress of your device', icon='🚨')
