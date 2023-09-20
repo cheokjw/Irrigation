@@ -1,4 +1,4 @@
-import streamlit.ReportThread as ReportThread
+import streamlit.report_thread as ReportThread
 from streamlit.server.Server import Server
 
 
