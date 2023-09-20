@@ -102,7 +102,7 @@ mac_ref = ''
 
 
 # List out all of current devices
-device_list = list(post_ref.stream())
+device_list = [device for device in post_ref.stream()]
 st.write(device_list)
 
 
