@@ -110,7 +110,7 @@ if st.button('Submit'):
     elif mac_add not in [mac.id for mac in post_ref.stream()]:
         st.warning('MAC Address does not exist in database', icon='🚨')
     else:
-        for seconds in range(999999):
+        while True:
             mac_ref = post_ref.document(mac_add).collection('data')
             df = pd.DataFrame({'datetime': ['2023-09-12 15:23:23'], 
                         'distance': [10], 
