@@ -132,7 +132,7 @@ if st.button('Submit'):
                 df = pd.concat([df, temp_df], ignore_index = True)
 
             with placeholder.container():
-                st.dataframe(df)
+                st.dataframe(df.tail(5))
 
                 df['datetime'] = pd.to_datetime(df['datetime'], format='%Y-%m-%d %H:%M:%S')
                 st.title('Distance Graph')
