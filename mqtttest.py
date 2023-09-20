@@ -1,5 +1,14 @@
 import paho.mqtt.client as mqtt
 
+try:
+    import streamlit.ReportThread as ReportThread
+    from streamlit.server.Server import Server
+except Exception:
+    # Streamlit >= 0.65.0
+    import streamlit.report_thread as ReportThread
+    from streamlit.server.server import Server
+
+
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
