@@ -58,29 +58,6 @@ st.header('Plant SETTINGS 🛞')
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
 
-# Test
-if st.button('Plant 1🪴'):
-    st.write('test')
-    post_ref2.document(mac_add).set({
-        'currPlant': 1,
-        'distance': 30,
-        'humidity': 10,
-        'lightIntensity': 60,
-        'moisture': 10,
-        'pH': 7,
-        'temperature': 28
-    })
-
-im_plant1 = Image.open('asset/plant1.jpg')
-st.image(im_plant1)
-st.markdown("""
-Distance Threshold    : 30 \n
-Humidity Threshold    : 10 \n
-Light Intensity       : 60 \n
-Moisure Threshold     : 10 \n 
-pH Threshold          : 7  \n
-Temperature Threshold : 28 \n
-""")
 
 # ----
 if st.button('Submit'):
