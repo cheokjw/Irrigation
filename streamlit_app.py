@@ -48,9 +48,6 @@ st.header('Smart Irrigation System')
 username = st.text_input('Username: ')
 
 if st.button('Login'):
-    # Testing Purpose
-    print(username)
-    print(userList)
 
     if len(username) == 0:
         st.warning("Username should not be EMPTY!", icon='🚨')
@@ -62,7 +59,10 @@ if st.button('Login'):
         currUser = db.collection('currentUser').document('curr').get().to_dict()
 
         if userInfo['password'] == currUser['rfid']:
+            curr_username = db.collection('currentUser').document('curr')
+            curr_username.set({'rfid': 'None', 'user':username})
             switch_page('main')
+
         elif userInfo['password'] != currUser['rfid']:
             st.warning("Username and RFID card/tag did not match", icon='🚨')
         else:
