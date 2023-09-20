@@ -7,7 +7,7 @@ import pandas as pd
 from streamlit_extras.switch_page_button import switch_page
 from google.cloud import firestore
 from google.oauth2 import service_account
-
+import time
 
 now = datetime.now()
 curr = now.strftime("%d-%m-%Y %H:%M:%S")
@@ -98,48 +98,50 @@ if st.button('🛞'):
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
 if st.button('Submit'):
-    if len(mac_add) == 0:
-        st.warning('Please enter MAC Adress of your device', icon='🚨')
-    elif mac_add not in [mac.id for mac in post_ref.stream()]:
-        st.warning('MAC Address does not exist in database', icon='🚨')
-    else:
-        mac_ref = post_ref.document(mac_add).collection('data')
-        df = pd.DataFrame({'datetime': ['2023-09-12 15:23:23'], 
-                    'distance': [10], 
-                    'humidity':[10], 
-                    'lightIntensity':[10], 
-                    'moisture':[10],
-                    'pH': [7], 
-                    'temperature':[28]})
+    while True:
+        if len(mac_add) == 0:
+            st.warning('Please enter MAC Adress of your device', icon='🚨')
+        elif mac_add not in [mac.id for mac in post_ref.stream()]:
+            st.warning('MAC Address does not exist in database', icon='🚨')
+        else:
+            mac_ref = post_ref.document(mac_add).collection('data')
+            df = pd.DataFrame({'datetime': ['2023-09-12 15:23:23'], 
+                        'distance': [10], 
+                        'humidity':[10], 
+                        'lightIntensity':[10], 
+                        'moisture':[10],
+                        'pH': [7], 
+                        'temperature':[28]})
 
-        for doc in mac_ref.stream():
-            data = doc.to_dict()
-            temp_df = pd.DataFrame({
-                'datetime': [doc.id],
-                'distance': [data["distance"]],
-                'humidity': [data["humidity"]],
-                'lightIntensity': [data["lightIntensity"]],
-                'moisture': [data["moisture"]],
-                'pH': [data["pH"]],
-                'temperature': [data["temperature"]]
-            })
-            df = pd.concat([df, temp_df], ignore_index = True)
+            for doc in mac_ref.stream():
+                data = doc.to_dict()
+                temp_df = pd.DataFrame({
+                    'datetime': [doc.id],
+                    'distance': [data["distance"]],
+                    'humidity': [data["humidity"]],
+                    'lightIntensity': [data["lightIntensity"]],
+                    'moisture': [data["moisture"]],
+                    'pH': [data["pH"]],
+                    'temperature': [data["temperature"]]
+                })
+                df = pd.concat([df, temp_df], ignore_index = True)
 
-        st.dataframe(df)
+            st.dataframe(df)
 
-        df['datetime'] = pd.to_datetime(df['datetime'], format='%Y-%m-%d %H:%M:%S')
-        st.title('Distance Graph')
-        st.line_chart(data=df[['datetime', 'distance']], x='datetime', y ='distance')
+            df['datetime'] = pd.to_datetime(df['datetime'], format='%Y-%m-%d %H:%M:%S')
+            st.title('Distance Graph')
+            st.line_chart(data=df[['datetime', 'distance']], x='datetime', y ='distance')
 
-        st.title('Humidity & Moisture Graph')
-        st.line_chart(data=df[['datetime', 'humidity', 'moisture']], x='datetime', y =['humidity', 'moisture'])
+            st.title('Humidity & Moisture Graph')
+            st.line_chart(data=df[['datetime', 'humidity', 'moisture']], x='datetime', y =['humidity', 'moisture'])
 
-        st.title('Temperature & Light Intensity Graph')
-        st.area_chart(data=df[['datetime', 'temperature', 'lightIntensity']], x='datetime', y =['temperature', 'lightIntensity'])
+            st.title('Temperature & Light Intensity Graph')
+            st.area_chart(data=df[['datetime', 'temperature', 'lightIntensity']], x='datetime', y =['temperature', 'lightIntensity'])
 
-        st.title('pH Graph')
-        st.line_chart(data=df[['datetime', 'pH']], x='datetime', y ='pH')
-        # ----------------------------------------------------------
+            st.title('pH Graph')
+            st.line_chart(data=df[['datetime', 'pH']], x='datetime', y ='pH')
+            time.sleep(5)
+            # ----------------------------------------------------------
 
 
 
