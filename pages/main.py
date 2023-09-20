@@ -40,34 +40,26 @@ post_ref = db.collection(current_user_ref['user'])
 
 
 # MQTT -----------------------------------------------------
+# The callback for when the client receives a CONNACK response from the server.
+def on_connect(client, userdata, flags, rc):
+    print("Connected with result code "+str(rc))
+    st.write("Connected with result code "+str(rc))
 
-# thread_safe_st = ThreadSafeSt()
+    # Subscribing in on_connect() means that if we lose the connection and
+    # reconnect then subscriptions will be renewed.
+    client.subscribe('paho/IOTtest')
 
-# # The callback for when the client receives a CONNACK response from the server.
-# def on_connect(client, userdata, flags, rc):
-#     print("Connected with result code "+str(rc))
-#     thread_safe_st.markdown("Connected with result code "+str(rc))
+# The callback for when a PUBLISH message is received from the server.
+def on_message(client, userdata, msg):
+    print(msg.topic+" "+str(msg.payload))
+    st.write(msg.topic+" "+str(msg.payload))
 
-#     # Subscribing in on_connect() means that if we lose the connection and
-#     # reconnect then subscriptions will be renewed.
-#     client.subscribe('paho/IOTtest')
-
-# # The callback for when a PUBLISH message is received from the server.
-# def on_message(client, userdata, msg):
-#     print(msg.topic+" "+str(msg.payload))
-#     thread_safe_st.markdown(msg.topic+" "+str(msg.payload))
-
-# # Connect to MQTT client
-# client = mqtt.Client()
-# client.on_connect = on_connect
-# client.on_message = on_message
-# client.connect("mqtt.eclipseprojects.io", 1883, 60)
-# client.subscribe('paho/IOTtest')
-
-# # handles reconnecting.
-# # Other loop*() functions are available that give a threaded interface and a
-# # manual interface
-# client.loop_forever()
+# Connect to MQTT client
+client = mqtt.Client()
+client.on_connect = on_connect
+client.on_message = on_message
+client.connect("mqtt.eclipseprojects.io", 1883, 60)
+client.subscribe('paho/IOTtest')
 # ----------------------------------------------------------
 
 
@@ -109,6 +101,10 @@ if st.button('Submit'):
         st.warning('MAC Address does not exist in database', icon='🚨')
     else:
         while True:
+            message_container = st.empty()
+            message = client.loop()
+            if message:
+                message_container.text(message)
             mac_ref = post_ref.document(mac_add).collection('data')
             df = pd.DataFrame({'datetime': ['2023-09-12 15:23:23'], 
                         'distance': [10], 
