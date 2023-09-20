@@ -58,10 +58,7 @@ st.header('Plant SETTINGS 🛞')
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
 
-# Test
-userData = post_ref2.document('00-B0-D0-63-C2-26').get().to_dict()
-st.write(userData)
-st.write('test  ')
+
 # ----
 if st.button('Submit'):
     if len(mac_add) == 0:
@@ -91,7 +88,7 @@ if st.button('Submit'):
         with col1:
             if st.button('Plant 1🪴'):
                 st.write('test')
-                post_ref2.document('00-B0-D0-63-C2-26').set({
+                post_ref2.document(mac_add).set({
                     'currPlant': 1,
                     'distance': 30,
                     'humidity': 10,
@@ -116,7 +113,7 @@ if st.button('Submit'):
         with col2:
             if st.button('Plant 2🪴'):
                 plantText = 'Plant 2'
-                post_ref2.document('00-B0-D0-63-C2-26').set({
+                post_ref2.document(mac_add).set({
                     'currPlant': 2,
                     'distance': 26,
                     'humidity': 40,
@@ -140,7 +137,7 @@ if st.button('Submit'):
         with col3:
             if st.button('Plant 3🪴'):
                 plantText = 'Plant 3'
-                post_ref2.document('00-B0-D0-63-C2-26').set({
+                post_ref2.document(mac_add).set({
                     'currPlant': 3,
                     'distance': 40,
                     'humidity': 5,
@@ -176,14 +173,14 @@ if st.button('Submit'):
 
 
         if st.button('Customize 🪴'):
-                plantText = 'Customized Plant'
-                post_ref2.document('00-B0-D0-63-C2-26').set({
-                    'currPlant': 4,
-                    'distance': distance,
-                    'humidity': humidity,
-                    'lightIntensity': light,
-                    'moisture': moisture,
-                    'pH': ph,
-                    'temperature': temp
-                })
+            plantText = 'Customized Plant'
+            post_ref2.document(mac_add).set({
+                'currPlant': 4,
+                'distance': distance,
+                'humidity': humidity,
+                'lightIntensity': light,
+                'moisture': moisture,
+                'pH': ph,
+                'temperature': temp
+            })
 
