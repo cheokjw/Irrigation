@@ -92,10 +92,6 @@ st.markdown(
 st.header('Smart Irrigation System')
 
 
-# creating a single-element container
-placeholder = st.empty()
-
-
 if st.button('🛞'):
     switch_page('settings')
 
@@ -103,6 +99,8 @@ if st.button('🛞'):
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
 if st.button('Submit'):
+    # creating a single-element container
+    placeholder = st.empty()
     current_user_ref =  db.collection('currentUser').document('curr').get().to_dict()
     post_ref = db.collection(current_user_ref['user'])
     if len(mac_add) == 0:
