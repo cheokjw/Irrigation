@@ -77,6 +77,9 @@ thread = None
 running = True
 thread = threading.Thread(target=mqtt_thread)
 thread.start()
+
+if not q.empty():
+    st.write(q.get())
 # ----------------------------------------------------------
 
 
