@@ -102,7 +102,7 @@ mac_ref = ''
 
 
 # List out all of current devices
-device_list = [doc.id for doc in post_ref.list_documents().get().to_duct()]
+device_list = [doc.id for doc in post_ref.list_documents()]
 st.write(device_list)
 
 
