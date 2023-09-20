@@ -99,6 +99,14 @@ with col2:
 # Ask user to enter MAC address
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
+
+
+# List out all of current devices
+device_list = list(post_ref.stream())
+st.write(device_list)
+
+
+
 if st.button('Submit'):
     # creating a single-element container
     placeholder = st.empty()
