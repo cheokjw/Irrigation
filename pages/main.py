@@ -102,7 +102,7 @@ mac_ref = ''
 
 
 # List out all of current devices
-device_list = [doc.id for doc in post_ref.list_documents()]
+device_list = [doc.id for doc in post_ref.list_documents() if doc.id != 'secret']
 st.write(device_list)
 
 
