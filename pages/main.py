@@ -69,8 +69,8 @@ client.connect("mqtt.eclipseprojects.io", 1883, 60)
 
 
 def mqtt_thread():
-    mqtt_client.subscribe('paho/IOTtest')
-    mqtt_client.loop_start()
+    client.subscribe('paho/IOTtest')
+    client.loop_start()
 
 
 thread = None
