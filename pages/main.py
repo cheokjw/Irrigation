@@ -93,7 +93,7 @@ with col1:
 with col2:
     if st.button('Logout❗'):
         curr_user = db.collection('currentUser').document('curr')
-        curr_user.set({'rfid': 'None', 'user': 'None'})
+        curr_user.set({'rfid': "b''", 'user': 'None'})
         switch_page('streamlit_app')
 
 # Ask user to enter MAC address

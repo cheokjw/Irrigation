@@ -60,7 +60,7 @@ if st.button('Login'):
 
         if userInfo['password'] == currUser['rfid']:
             curr_username = db.collection('currentUser').document('curr')
-            curr_username.set({'rfid': 'None', 'user':username})
+            curr_username.set({'rfid': "b''", 'user':username})
             switch_page('main')
 
         elif userInfo['password'] != currUser['rfid']:

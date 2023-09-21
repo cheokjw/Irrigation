@@ -53,7 +53,7 @@ if st.button('Register now'):
         st.warning("Invalid username", icon='🚨')
 
 
-    elif curr_rfid == 'None':
+    elif curr_rfid == "b''":
         st.warning("No RFID has been detected (Please scan your card)", icon='🚨')
 
 
