@@ -43,7 +43,7 @@ post_ref = db.collection(current_user_ref['user'])
 # MQTT -----------------------------------------------------
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
-    print("Connected with result code "+str(rc)[2:-2])
+    print("Connected with result code "+str(rc))
     # st.write("Connected with result code "+str(rc))
 
     # Subscribing in on_connect() means that if we lose the connection and
@@ -55,13 +55,13 @@ def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
     
     if msg.topic == f'paho/IOTtest/{mac_add}/humidity':
-        hum_container.text("Humidity: " + str(msg.payload))
+        hum_container.text("Humidity: " + str(msg.payload)[2:-2])
     if msg.topic == f'paho/IOTtest/{mac_add}/lightIntensity':
-        light_container.text("Light: " + str(msg.payload))
+        light_container.text("Light: " + str(msg.payload)[2:-2])
     if msg.topic == f'paho/IOTtest/{mac_add}/moisture':
-        moisture_container.text("Moisture: " + str(msg.payload))
+        moisture_container.text("Moisture: " + str(msg.payload)[2:-2])
     if msg.topic == f'paho/IOTtest/{mac_add}/temperature':
-        temperature_container.text("Temperature: " + str(msg.payload))
+        temperature_container.text("Temperature: " + str(msg.payload)[2:-2])
 
 
 # Connect to MQTT client
