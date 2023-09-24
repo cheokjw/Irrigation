@@ -120,9 +120,9 @@ if st.button('Submit'):
     elif mac_add not in [mac.id for mac in post_ref.stream()]:
         st.warning('MAC Address does not exist in database', icon='🚨')
     else:
+        message_container = st.empty()
         while True:
             # MQTT Part ----------------------------------------------------------
-            message_container = st.empty()
             message = client.loop()
             if message:
                 message_container.text(message)
