@@ -53,7 +53,7 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
-    # st.write(msg.topic+" "+str(msg.payload))
+    message_container.text(msg.topic+" "+str(msg.payload))
 
 # Connect to MQTT client
 client = mqtt.Client()
