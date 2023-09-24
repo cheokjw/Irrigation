@@ -169,10 +169,10 @@ if st.button('Submit'):
 
                 # Convert DataType
                 df['datetime'] = pd.to_datetime(df['datetime'], format='%d-%m-%Y %H:%M:%S')
-                df["humidity"] = df["humidity"].astype(int)
-                df["lightIntensity"] = df["lightIntensity"].astype(int)
-                df["moisture"] = df["moisture"].astype(int)
-                df["temperature"] = df["temperature"].astype(int)
+                df["humidity"] = df["humidity"].astype(float)
+                df["lightIntensity"] = df["lightIntensity"].astype(float)
+                df["moisture"] = df["moisture"].astype(float)
+                df["temperature"] = df["temperature"].astype(float)
 
                 # Display Graphs
                 st.title('Humidity Graph')
