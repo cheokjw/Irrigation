@@ -168,7 +168,7 @@ if st.button('Submit'):
                 st.dataframe(df.tail(5))
 
                 # Convert DataType
-                df['datetime'] = pd.to_datetime(df['datetime'], format='%Y-%m-%d %H:%M:%S')
+                df['datetime'] = pd.to_datetime(df['datetime'], format='%d-%m-%Y %H:%M:%S')
                 df["humidity"] = df["humidity"].astype(int)
                 df["lightIntensity"] = df["lightIntensity"].astype(int)
                 df["moisture"] = df["moisture"].astype(int)
