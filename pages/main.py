@@ -147,7 +147,7 @@ if st.button('Submit'):
             message = client.loop()
             # Historical Data Part -----------------------------------------------
             mac_ref = post_ref.document(mac_add).collection('data')
-            df = pd.DataFrame({'datetime': ['2023-09-12 15:23:23'], 
+            df = pd.DataFrame({'datetime': ['12-09-2023 15:23:23'], 
                         'humidity':['10'], 
                         'lightIntensity':['10'], 
                         'moisture':['10'],
