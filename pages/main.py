@@ -55,13 +55,13 @@ def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
     
     if msg.topic == f'paho/IOTtest/{mac_add}/humidity':
-        hum_container.text(str(msg.payload))
+        hum_container.text("Humidity: " + str(msg.payload))
     if msg.topic == f'paho/IOTtest/{mac_add}/lightIntensity':
-        light_container.text(str(msg.payload))
+        light_container.text("Light Intensity : " + str(msg.payload))
     if msg.topic == f'paho/IOTtest/{mac_add}/moisture':
-        moisture_container.text(str(msg.payload))
+        moisture_container.text("Moisture : " + str(msg.payload))
     if msg.topic == f'paho/IOTtest/{mac_add}/temperature':
-        temperature_container.text(str(msg.payload))
+        temperature_container.text("Temperature : " + str(msg.payload))
 
 
 # Connect to MQTT client
