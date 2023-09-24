@@ -53,9 +53,8 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
-
-    topic_list = [f'paho/IOTtest/{mac_add}/humidity', f'paho/IOTtest/{mac_add}/lightIntensity', f'paho/IOTtest/{mac_add}/moisture', f'paho/IOTtest/{mac_add}/temperature']
-    if msg.topic in topic_list:   
+    
+    if msg.topic == f'paho/IOTtest/{mac_add}':
         message_container.text(str(msg.payload))
 
 # Connect to MQTT client
