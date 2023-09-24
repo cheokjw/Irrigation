@@ -90,22 +90,18 @@ else:
         im_plant1 = Image.open('asset/plant1.jpg')
         st.image(im_plant1)
         st.markdown("""
-        Distance Threshold    : 30 \n
         Humidity Threshold    : 10 \n
         Light Intensity       : 60 \n
         Moisure Threshold     : 10 \n 
-        pH Threshold          : 7  \n
         Temperature Threshold : 28 \n
         """)
         if st.button('Plant 1🪴'):
             st.write('test')
             post_ref2.document(mac_add).set({
                 'currPlant': 1,
-                'distance': 30,
                 'humidity': 10,
                 'lightIntensity': 60,
                 'moisture': 10,
-                'pH': 7,
                 'temperature': 28
             })
 
@@ -116,22 +112,18 @@ else:
         im_plant1 = Image.open('asset/plant2.jpg')
         st.image(im_plant1)
         st.markdown("""
-        Distance Threshold    : 26 \n
         Humidity Threshold    : 40 \n
         Light Intensity       : 0 \n
         Moisure Threshold     : 10 \n 
-        pH Threshold          : 8  \n
         Temperature Threshold : 30 \n
         """)
         if st.button('Plant 2🪴'):
             plantText = 'Plant 2'
             post_ref2.document(mac_add).set({
                 'currPlant': 2,
-                'distance': 26,
                 'humidity': 40,
                 'lightIntensity': 0,
                 'moisture': 10,
-                'pH': 8,
                 'temperature': 30
             })
 
@@ -140,22 +132,18 @@ else:
         im_plant1 = Image.open('asset/plant3.jpg')
         st.image(im_plant1)
         st.markdown("""
-        Distance Threshold    : 40 \n
         Humidity Threshold    : 5 \n
         Light Intensity       : 20 \n
         Moisure Threshold     : 40 \n 
-        pH Threshold          : 5  \n
         Temperature Threshold : 20 \n
         """)
         if st.button('Plant 3🪴'):
             plantText = 'Plant 3'
             post_ref2.document(mac_add).set({
                 'currPlant': 3,
-                'distance': 40,
                 'humidity': 5,
                 'lightIntensity': 20,
                 'moisture': 40,
-                'pH': 5,
                 'temperature': 20
             })
 
@@ -164,11 +152,9 @@ else:
     # Customizable plant
     st.header('Customize Plant Settings')
 
-    distance = st.slider('Distance', 0, 500, userData['distance'])
     humidity = st.slider('Humidity', 0, 100, userData['humidity'])
     light = st.slider('Light Intensity', 0, 100, userData['lightIntensity'])
     moisture = st.slider('Moisture Level', 0, 100, userData['moisture'])
-    ph = st.slider('pH Level', 0, 14, userData['pH'])
     temp = st.slider('Temperature', 0, 50, userData['temperature'])
 
 
@@ -177,11 +163,9 @@ else:
         plantText = 'Customized Plant'
         post_ref2.document(mac_add).set({
             'currPlant': 4,
-            'distance': distance,
             'humidity': humidity,
             'lightIntensity': light,
             'moisture': moisture,
-            'pH': ph,
             'temperature': temp
         })
 
