@@ -55,13 +55,13 @@ def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
     
     if msg.topic == f'paho/IOTtest/{mac_add}/humidity':
-        hum_container.text("Humidity: " + str(msg.payload)[1:-1])
+        hum_container.text("Humidity: " + str(msg.payload)[2:-1])
     if msg.topic == f'paho/IOTtest/{mac_add}/lightIntensity':
-        light_container.text("Light: " + str(msg.payload)[1:-1])
+        light_container.text("Light: " + str(msg.payload)[2:-1])
     if msg.topic == f'paho/IOTtest/{mac_add}/moisture':
-        moisture_container.text("Moisture: " + str(msg.payload)[1:-1])
+        moisture_container.text("Moisture: " + str(msg.payload)[2:-1])
     if msg.topic == f'paho/IOTtest/{mac_add}/temperature':
-        temperature_container.text("Temperature: " + str(msg.payload)[1:-1])
+        temperature_container.text("Temperature: " + str(msg.payload)[2:-1])
 
 
 # Connect to MQTT client
@@ -148,12 +148,10 @@ if st.button('Submit'):
             # Historical Data Part -----------------------------------------------
             mac_ref = post_ref.document(mac_add).collection('data')
             df = pd.DataFrame({'datetime': ['2023-09-12 15:23:23'], 
-                        'distance': [10], 
-                        'humidity':[10], 
-                        'lightIntensity':[10], 
-                        'moisture':[10],
-                        'pH': [7], 
-                        'temperature':[28]})
+                        'humidity':['10'], 
+                        'lightIntensity':['10'], 
+                        'moisture':['10'],
+                        'temperature':['28']})
 
             for doc in mac_ref.stream():
                 data = doc.to_dict()
@@ -164,23 +162,30 @@ if st.button('Submit'):
                     'moisture': [data["moisture"]],
                     'temperature': [data["temperature"]]
                 })
-                df = pd.concat([df, temp_df], ignore_index = True)  # TODO: Convert String datatype to int datatype
+                df = pd.concat([df, temp_df], ignore_index = True)  
 
             with placeholder.container():
                 st.dataframe(df.tail(5))
 
+                # Convert DataType
                 df['datetime'] = pd.to_datetime(df['datetime'], format='%Y-%m-%d %H:%M:%S')
-                st.title('Distance Graph')
-                st.line_chart(data=df[['datetime', 'distance']], x='datetime', y ='distance')
+                df["humidity"] = df["humidity"].astype(int)
+                df["lightIntensity"] = df["lightIntensity"].astype(int)
+                df["moisture"] = df["moisture"].astype(int)
+                df["temperature"] = df["temperature"].astype(int)
 
-                st.title('Humidity & Moisture Graph')
-                st.line_chart(data=df[['datetime', 'humidity', 'moisture']], x='datetime', y =['humidity', 'moisture'])
+                # Display Graphs
+                st.title('Humidity Graph')
+                st.line_chart(data=df[['datetime', 'humidity']], x='datetime', y ='humidity')
 
-                st.title('Temperature & Light Intensity Graph')
-                st.area_chart(data=df[['datetime', 'temperature', 'lightIntensity']], x='datetime', y =['temperature', 'lightIntensity'])
+                st.title('Moisture Graph')
+                st.line_chart(data=df[['datetime', 'moisture']], x='datetime', y ='moisture')
 
-                st.title('pH Graph')
-                st.line_chart(data=df[['datetime', 'pH']], x='datetime', y ='pH')
+                st.title('Temperature Graph')
+                st.area_chart(data=df[['datetime', 'temperature']], x='datetime', y ='temperature')
+
+                st.title('Light Intensity Graph')
+                st.line_chart(data=df[['datetime', 'lightIntensity']], x='datetime', y ='lightIntensity')
                 time.sleep(1)
 
             # ----------------------------------------------------------
