@@ -58,6 +58,10 @@ st.header('Plant SETTINGS 🛞')
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
 
+device_list = [doc.id for doc in post_ref.list_documents() if doc.id != 'secret']
+string = ''
+st.write(device_list)
+
 if len(mac_add) == 0:
     st.warning('Please enter MAC Adress of your device', icon='🚨')
 elif mac_add not in [mac.id for mac in post_ref2.stream()]:
