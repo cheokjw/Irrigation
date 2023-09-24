@@ -114,9 +114,6 @@ mac_ref = ''
 device_list = [doc.id for doc in post_ref.list_documents() if doc.id != 'secret']
 string = ''
 st.write(device_list)
-for i in device_list:
-    string += "- " + i + "\n"
-st.markdown(string)
 
 
 
