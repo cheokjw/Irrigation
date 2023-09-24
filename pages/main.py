@@ -43,7 +43,7 @@ post_ref = db.collection(current_user_ref['user'])
 # MQTT -----------------------------------------------------
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
-    print("Connected with result code "+str(rc))
+    print("Connected with result code "+str(rc)[2:-2])
     # st.write("Connected with result code "+str(rc))
 
     # Subscribing in on_connect() means that if we lose the connection and
@@ -159,11 +159,9 @@ if st.button('Submit'):
                 data = doc.to_dict()
                 temp_df = pd.DataFrame({
                     'datetime': [doc.id],
-                    'distance': [data["distance"]],
                     'humidity': [data["humidity"]],
                     'lightIntensity': [data["lightIntensity"]],
                     'moisture': [data["moisture"]],
-                    'pH': [data["pH"]],
                     'temperature': [data["temperature"]]
                 })
                 df = pd.concat([df, temp_df], ignore_index = True)  # TODO: Convert String datatype to int datatype
