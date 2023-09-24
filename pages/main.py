@@ -54,8 +54,15 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
     
-    if msg.topic == f'paho/IOTtest/{mac_add}':
-        message_container.text(str(msg.payload))
+    if msg.topic == f'paho/IOTtest/{mac_add}/humidity':
+        hum_container.text(str(msg.payload))
+    if msg.topic == f'paho/IOTtest/{mac_add}/lightIntensity':
+        light_container.text(str(msg.payload))
+    if msg.topic == f'paho/IOTtest/{mac_add}/moisture':
+        moisture_container.text(str(msg.payload))
+    if msg.topic == f'paho/IOTtest/{mac_add}/temperature':
+        temperature_container.text(str(msg.payload))
+
 
 # Connect to MQTT client
 client = mqtt.Client()
@@ -122,7 +129,10 @@ if st.button('Submit'):
     elif mac_add not in [mac.id for mac in post_ref.stream()]:
         st.warning('MAC Address does not exist in database', icon='🚨')
     else:
-        message_container = st.empty()
+        hum_container = st.empty()
+        light_container = st.empty()
+        moisture_container = st.empty()
+        temperature_container = st.empty()
         while True:
             # MQTT Part ----------------------------------------------------------
             message = client.loop()
