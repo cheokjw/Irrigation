@@ -53,7 +53,10 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
-    message_container.text(msg.topic+" "+str(msg.payload))
+
+    topic_list = [f'paho/IOTtest/{mac_add}/humidity', f'paho/IOTtest/{mac_add}/lightIntensity', f'paho/IOTtest/{mac_add}/moisture', f'paho/IOTtest/{mac_add}/temperature']
+    if msg.topic in topic_list:   
+        message_container.text(str(msg.payload))
 
 # Connect to MQTT client
 client = mqtt.Client()
@@ -124,9 +127,6 @@ if st.button('Submit'):
         while True:
             # MQTT Part ----------------------------------------------------------
             message = client.loop()
-            if message:
-                message_container.text(message)
-
             # Historical Data Part -----------------------------------------------
             mac_ref = post_ref.document(mac_add).collection('data')
             df = pd.DataFrame({'datetime': ['2023-09-12 15:23:23'], 
