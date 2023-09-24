@@ -44,7 +44,7 @@ post_ref = db.collection(current_user_ref['user'])
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
-    st.write("Connected with result code "+str(rc))
+    # st.write("Connected with result code "+str(rc))
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
@@ -53,7 +53,7 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
-    st.write(msg.topic+" "+str(msg.payload))
+    # st.write(msg.topic+" "+str(msg.payload))
 
 # Connect to MQTT client
 client = mqtt.Client()
@@ -148,7 +148,7 @@ if st.button('Submit'):
                     'pH': [data["pH"]],
                     'temperature': [data["temperature"]]
                 })
-                df = pd.concat([df, temp_df], ignore_index = True)
+                df = pd.concat([df, temp_df], ignore_index = True)  # TODO: Convert String datatype to int datatype
 
             with placeholder.container():
                 st.dataframe(df.tail(5))
