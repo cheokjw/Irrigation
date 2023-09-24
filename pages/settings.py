@@ -58,7 +58,7 @@ st.header('Plant SETTINGS 🛞')
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
 
-device_list = [doc.id for doc in post_ref.list_documents() if doc.id != 'secret']
+device_list = [doc.id for doc in post_ref2.list_documents() if doc.id != 'secret']
 string = ''
 st.write(device_list)
 
