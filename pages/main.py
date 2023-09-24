@@ -124,7 +124,8 @@ if st.button('Submit'):
             # MQTT Part ----------------------------------------------------------
             message_container = st.empty()
             message = client.loop()
-            st.write(message)
+            if message:
+                message_container.text(message)
 
             # Historical Data Part -----------------------------------------------
             mac_ref = post_ref.document(mac_add).collection('data')
