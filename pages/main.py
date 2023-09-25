@@ -117,6 +117,7 @@ st.write(device_list)
 
 
 con1, con2, con3, con4 = st.columns(4)
+st.header('Real Time Data')
 with con1:
     hum_container = st.empty()
 with con2:
@@ -125,7 +126,12 @@ with con3:
     moisture_container = st.empty()
 with con4:
     temperature_container = st.empty()
-    
+st.markdown(
+    """
+    ---
+    """
+)
+
 if st.button('Submit'):
     # creating a single-element container
     placeholder = st.empty()
