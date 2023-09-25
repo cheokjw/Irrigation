@@ -62,6 +62,10 @@ def on_message(client, userdata, msg):
         moisture_container.text("Moisture: " + str(msg.payload)[2:-1])
     if msg.topic == f'paho/IOTtest/{mac_add}/temperature':
         temperature_container.text("Temperature: " + str(msg.payload)[2:-1])
+    if msg.topic == f'paho/IOTtest/{mac_add}/status':
+        sensor1_container.text("Status: " + str(msg.payload)[2:-1])
+    if msg.topic == f'paho/IOTtest/{mac_add}/water':
+        sensor2_container.text("Water: " + str(msg.payload)[2:-1])
 
 
 # Connect to MQTT client
@@ -125,6 +129,10 @@ with con3:
     moisture_container = st.empty()
 with con4:
     temperature_container = st.empty()
+
+st.header('Sensor Status')
+sensor1_container = st.empty()
+sensor2_container = st.empty()
 st.markdown(
     """
     ---
