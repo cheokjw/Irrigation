@@ -131,7 +131,6 @@ with con4:
     temperature_container = st.empty()
 
 st.header('Sensor Status')
-st.write('test')
 sensor1_container = st.empty()
 sensor2_container = st.empty()
 st.markdown(
