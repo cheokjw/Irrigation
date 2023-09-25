@@ -115,9 +115,8 @@ device_list = [doc.id for doc in post_ref.list_documents() if doc.id != 'secret'
 string = ''
 st.write(device_list)
 
-
-con1, con2, con3, con4 = st.columns(4)
 st.header('Real Time Data')
+con1, con2, con3, con4 = st.columns(4)
 with con1:
     hum_container = st.empty()
 with con2:
