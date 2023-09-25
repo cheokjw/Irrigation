@@ -116,7 +116,16 @@ string = ''
 st.write(device_list)
 
 
-
+con1, con2, con3, con4 = st.columns(4)
+with con1:
+    hum_container = st.empty()
+with con2:
+    light_container = st.empty()
+with con3:
+    moisture_container = st.empty()
+with con4:
+    temperature_container = st.empty()
+    
 if st.button('Submit'):
     # creating a single-element container
     placeholder = st.empty()
@@ -127,19 +136,6 @@ if st.button('Submit'):
     elif mac_add not in [mac.id for mac in post_ref.stream()]:
         st.warning('MAC Address does not exist in database', icon='🚨')
     else:
-
-        con1, con2, con3, con4 = st.columns(4)
-        with con1:
-            hum_container = st.empty()
-        with con2:
-            light_container = st.empty()
-        with con3:
-            moisture_container = st.empty()
-        with con4:
-            temperature_container = st.empty()
-
-
-
         while True:
             # MQTT Part ----------------------------------------------------------
             message = client.loop()
