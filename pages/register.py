@@ -76,7 +76,7 @@ if st.button('Register now'):
 
         # Set current user
         curr_user = db.collection('currentUser').document('curr')
-        curr_user.set({'rfid': 'None', 'user':username})
+        curr_user.set({'rfid': "b''", 'user':username})
 
         # Remove current rfid
         
