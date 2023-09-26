@@ -62,11 +62,14 @@ if st.button('Login'):
             curr_username = db.collection('currentUser').document('curr')
             curr_username.set({'rfid': "b''", 'user':username})
             switch_page('main')
-
-        elif userInfo['password'] != currUser['rfid']:
-            st.warning("Username and RFID card/tag did not match", icon='🚨')
+        
         elif currUser['rfid'] == "b''":
             st.warning("Please scan RFID card/ tag", icon='🚨')
+            
+        elif userInfo['password'] != currUser['rfid']:
+            st.warning("Username and RFID card/tag did not match", icon='🚨')
+
+        
 
 elif st.button('Don\'t have an account yet? Click to Register'):
     switch_page('register')
