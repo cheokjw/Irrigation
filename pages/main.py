@@ -20,18 +20,6 @@ key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
 db = firestore.Client(credentials=creds)
 
-# TODO: ADD LOGOUT BUTTON, SUBSCRIBE MQTT
-
-# # Write Sample data into firestore
-# doc_ref = db.collection('user1').document(str(curr))
-# doc_ref.set({
-#     'distance': 40,
-#     'humidity': 10,
-#     'lightIntensity': 60,
-#     'moisture': 10,
-#     'pH': 7,
-#     'temperature': 28
-# })
 
 
 # Read all posts 
@@ -113,7 +101,7 @@ with col2:
 mac_add = st.text_input('Enter MAC Address of your device')
 mac_ref = ''
 
-
+st.write("Remember to refresh the page after adding sensors")
 # List out all of current devices
 device_list = [doc.id for doc in post_ref.list_documents() if doc.id != 'secret']
 string = ''
