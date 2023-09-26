@@ -65,7 +65,7 @@ if st.button('Login'):
 
         elif userInfo['password'] != currUser['rfid']:
             st.warning("Username and RFID card/tag did not match", icon='🚨')
-        else:
+        elif currUser['rfid'] == "b''":
             st.warning("Please scan RFID card/ tag", icon='🚨')
 
 elif st.button('Don\'t have an account yet? Click to Register'):
